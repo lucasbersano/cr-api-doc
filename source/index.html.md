@@ -1,15 +1,12 @@
 ---
-title: API Reference
+title: Referencia API
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
+language_tabs:
   - javascript
 
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
+# toc_footers:
+#   - <a href='#'>Sign Up for a Developer Key</a>
+#   - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -17,121 +14,95 @@ includes:
 search: true
 ---
 
-# Introduction
+# Introdução
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Benvido a documentação do Atendimento Total. API é baseada no padrão Graphql, é possivel explorar utilizando graphiql em
+https://apitest.crhoteisbrasil.com.br/api. Para os exemplos utilizamos a lib "graph-request".
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Todas as requiçoes precisam de uma chava para pode interagir com API. As resposta são em JSON, caso não tenha expereriencia com GraphQL lei esta documentação. https://graphql.org/learn/queries/
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+# Autenticação
 
-# Authentication
-
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+> Para qualquer query, precisa se anexado a chave.
 
 ```javascript
-const kittn = require('kittn');
+import { request } from "graphql-request";
 
-let api = kittn.authorize('meowmeowmeow');
+const query = `{
+    acomodacoesComTarifario(
+      acomodacaoComTarifarioSelect: { chave: "sua-chave" }
+    ) {
+      maxadt
+      msgadtes
+    }
+}`;
+
+request("https://apitest.crhoteisbrasil.com.br/api", query).then(data =>
+  console.log(data)
+);
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Lembrese de trocar `sua-chave` para sua chave de accesso
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
+TODO
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
 </aside>
 
-# Kittens
+# Acomodações
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+## Listar todas as acomodações
 
 ```javascript
-const kittn = require('kittn');
+import { request } from "graphql-request";
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+const query = `{
+	acomodacoes(acomodacaoSelect: {chave: "sua-chave"}) {
+    nome
+  }
+}`;
 ```
 
-> The above command returns JSON structured like this:
+> O comando de cima retornar o seguinte JSON
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+{
+  "data": {
+    "acomodacoes": [
+      {
+        "nome": "Ap 3 quartos - Ate 9 pessoas"
+      },
+      {
+        "nome": "Suite Luxo"
+      },
+      {
+        "nome": "Ap 1 quarto com sala e cozinha"
+      },
+      {
+        "nome": "Suite Dupla - Ate 6 pessoas"
+      }
+    ]
   }
-]
+}
 ```
 
 This endpoint retrieves all kittens.
 
-### HTTP Request
+<!-- ### HTTP Request
 
 `GET http://example.com/api/kittens`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+| Parameter    | Default | Description                                                                      |
+| ------------ | ------- | -------------------------------------------------------------------------------- |
+| include_cats | false   | If set to true, the result will also include cats.                               |
+| available    | true    | If set to false, the result will include kittens that have already been adopted. |
 
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
-</aside>
+</aside> -->
 
 ## Get a Specific Kitten
 
@@ -155,9 +126,9 @@ curl "http://example.com/api/kittens/2"
 ```
 
 ```javascript
-const kittn = require('kittn');
+const kittn = require("kittn");
 
-let api = kittn.authorize('meowmeowmeow');
+let api = kittn.authorize("meowmeowmeow");
 let max = api.kittens.get(2);
 ```
 
@@ -183,9 +154,9 @@ This endpoint retrieves a specific kitten.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+| Parameter | Description                      |
+| --------- | -------------------------------- |
+| ID        | The ID of the kitten to retrieve |
 
 ## Delete a Specific Kitten
 
@@ -210,9 +181,9 @@ curl "http://example.com/api/kittens/2"
 ```
 
 ```javascript
-const kittn = require('kittn');
+const kittn = require("kittn");
 
-let api = kittn.authorize('meowmeowmeow');
+let api = kittn.authorize("meowmeowmeow");
 let max = api.kittens.delete(2);
 ```
 
@@ -221,7 +192,7 @@ let max = api.kittens.delete(2);
 ```json
 {
   "id": 2,
-  "deleted" : ":("
+  "deleted": ":("
 }
 ```
 
@@ -233,7 +204,6 @@ This endpoint deletes a specific kitten.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+| Parameter | Description                    |
+| --------- | ------------------------------ |
+| ID        | The ID of the kitten to delete |
