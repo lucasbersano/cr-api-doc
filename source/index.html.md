@@ -18,7 +18,7 @@ search: true
 
 # Introdução
 
-Benvido a documentação do Atendimento Total. API é baseada no padrão Graphql, é possivel explorar utilizando graphiql em
+Bem-vindo a documentação do Atendimento Total. API é baseada no padrão Graphql, é possivel explorar utilizando graphiql em
 https://apitest.crhoteisbrasil.com.br/api. Para os exemplos utilizamos a lib "graph-request".
 
 Todas as requiçoes precisam de uma chava para pode interagir com API. As resposta são em JSON, caso não tenha expereriencia com GraphQL lei esta documentação. https://graphql.org/learn/queries/
