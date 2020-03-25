@@ -225,6 +225,14 @@
             <a href="#autenticacao" class="toc-h1 toc-link" data-title="Autenticação">Autenticação</a>
           </li>
           <li>
+            <a href="#hoteis" class="toc-h1 toc-link" data-title="Hoteis">Hoteis</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#listar-hoteis" class="toc-h2 toc-link" data-title="Listar Hoteis">Listar Hoteis</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#acomodacoes" class="toc-h1 toc-link" data-title="Acomodações">Acomodações</a>
               <ul class="toc-list-h2">
                   <li>
@@ -233,18 +241,10 @@
               </ul>
           </li>
           <li>
-            <a href="#acomodacoes-com-tarifario" class="toc-h1 toc-link" data-title="Acomodações com Tarifario">Acomodações com Tarifario</a>
+            <a href="#tarifarios" class="toc-h1 toc-link" data-title="Tarifários">Tarifários</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#listar-acomodacoes-com-tarifario" class="toc-h2 toc-link" data-title="Listar acomodações com tarifario">Listar acomodações com tarifario</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#tarifarios" class="toc-h1 toc-link" data-title="Tarifarios">Tarifarios</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#buscar-um-tarifario" class="toc-h2 toc-link" data-title="Buscar um tarifario">Buscar um tarifario</a>
+                    <a href="#buscar-um-tarifario" class="toc-h2 toc-link" data-title="Buscar um tarifário">Buscar um tarifário</a>
                   </li>
               </ul>
           </li>
@@ -254,13 +254,13 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introducao'>Introdução</h1>
-<p>Bem-vindo a documentação do Atendimento Total. API é baseada no padrão Graphql, é possivel explorar utilizando graphiql em
+<p>Bem-vindo a documentação do Atendimento Total. API é baseada no padrão Graphql, é possível explorar utilizando graphiql em
 https://apitest.crhoteisbrasil.com.br/api. Para os exemplos utilizamos a lib &quot;graph-request&quot;.</p>
 
-<p>Todas as requiçoes precisam de uma chava para pode interagir com API. As resposta são em JSON, caso não tenha expereriencia com GraphQL lei esta documentação. https://graphql.org/learn/queries/</p>
+<p>Todas as requisições precisam de uma chave para pode interagir com API. As resposta são em JSON, caso não tenha experiência com GraphQL lei esta documentação. https://graphql.org/learn/queries/</p>
 <h1 id='autenticacao'>Autenticação</h1>
 <blockquote>
-<p>Para qualquer query, precisa se anexado a chave.</p>
+<p>Para qualquer query, precisa anexar a chave API.</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">request</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">"graphql-request"</span><span class="p">;</span>
 
@@ -281,11 +281,123 @@ https://apitest.crhoteisbrasil.com.br/api. Para os exemplos utilizamos a lib &qu
 <p>Lembrese de trocar <code>sua-chave</code> para sua chave de accesso</p>
 </blockquote>
 
-<p>A autentificação é feita da seguinte maneira, dentro dos argumentos do query, deve se passar o <code>chave</code>. Contate seu administrador para ter acceso a chave.</p>
+<p>A autenticação é feita da seguinte maneira, dentro dos argumentos do query, deve se passar o <code>chave</code>. Contate seu administrador para ter acceso a chave.</p>
 
 <aside class="notice">
-Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
+Lembre de trocar  <code>sua-chave</code> para sua chave de acesso
 </aside>
+<h1 id='hoteis'>Hoteis</h1><h2 id='listar-hoteis'>Listar Hoteis</h2>
+<p>Liste todo os hoteis disponiveis e seu codigos. Passe um codhotel no argumentos para filtra por um hotel específico.</p>
+<pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">request</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">"graphql-request"</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="s2">`{
+  usuarios(usuarioSelect: {chave: "sua-chave"}) {
+    codhotel
+    nomehotel
+    endereco
+    cidade
+  }}
+}`</span><span class="p">;</span>
+</code></pre>
+<blockquote>
+<p>O comando de cima retornar o seguinte JSON</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"usuarios"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"codhotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0777"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av. Beira Mar, 777"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nomehotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aquaville Hotel"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porto Seguro"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"codhotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"nomehotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beach Mar Resort"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua Erivam França, 172"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Natal"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h3 id='argumentos'>Argumentos</h3>
+<table><thead>
+<tr>
+<th>Argumento</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>top</td>
+<td>Int</td>
+<td>Limita a quantidade de resultados</td>
+</tr>
+<tr>
+<td>chave</td>
+<td>String</td>
+<td>Chave API</td>
+</tr>
+<tr>
+<td>codhotel</td>
+<td>String</td>
+<td>Código do hotel, passe o codigo para filtrar</td>
+</tr>
+</tbody></table>
+<h3 id='paramentros-de-retorno'>Parâmentros de retorno</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Tipo</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>codhotel</td>
+<td>String</td>
+<td>Código do hotel</td>
+</tr>
+<tr>
+<td>nomehotel</td>
+<td>String</td>
+<td>Nome do hotel</td>
+</tr>
+<tr>
+<td>endereco</td>
+<td>String</td>
+<td>Endereço do hotel</td>
+</tr>
+<tr>
+<td>bairro</td>
+<td>String</td>
+<td>Bairro</td>
+</tr>
+<tr>
+<td>cidade</td>
+<td>String</td>
+<td>Cidade</td>
+</tr>
+<tr>
+<td>estado</td>
+<td>String</td>
+<td>Estado</td>
+</tr>
+<tr>
+<td>cep</td>
+<td>Int</td>
+<td>CEP</td>
+</tr>
+<tr>
+<td>cnpj</td>
+<td>String</td>
+<td>CNPJ</td>
+</tr>
+<tr>
+<td>fone</td>
+<td>String</td>
+<td>Fone</td>
+</tr>
+</tbody></table>
 <h1 id='acomodacoes'>Acomodações</h1><h2 id='listar-acomodacoes'>Listar acomodações</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">request</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">"graphql-request"</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="s2">`{
@@ -375,7 +487,7 @@ Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
 <tr>
 <td>chd5free</td>
 <td>Int</td>
-<td>Quantidade de crianças ate 5 anos que não pagam tarifa</td>
+<td>Quantidade de crianças até 5 anos que não pagam tarifa</td>
 </tr>
 <tr>
 <td>maxchd12</td>
@@ -385,7 +497,7 @@ Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
 <tr>
 <td>chd12free</td>
 <td>Int</td>
-<td>Quantidade de crianças ate 12 anos que não pagam tarifa</td>
+<td>Quantidade de crianças até 12 anos que não pagam tarifa</td>
 </tr>
 <tr>
 <td>minocup</td>
@@ -395,7 +507,7 @@ Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
 <tr>
 <td>maxocup</td>
 <td>Int</td>
-<td>Quantidade maxima de ocupação</td>
+<td>Quantidade máxima de ocupação</td>
 </tr>
 <tr>
 <td>descricao</td>
@@ -403,891 +515,119 @@ Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
 <td>Descrição da acomodação</td>
 </tr>
 <tr>
-<td>foto1</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>foto2</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>foto3</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>foto4</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
 <td>frigobar</td>
 <td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>cofre</td>
-<td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem frigobar, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>tvnormalslim</td>
 <td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>tvlcd</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>tvacabo</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>arcondicionado</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>arsplit</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>ventiladordeteto</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>fechaduraeletronica</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>varandasacada</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>hidromassagem</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>camabox</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>cortina</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>secador</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>naofumante</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>cozinhacompleta</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>saladeestar</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>conjugado</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>telefone</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaoingles</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaoespanhol</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaoitaliano</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>nomeingles</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>nomeespanhol</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>nomeitaliano</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>internet</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idchannel</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompleta</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompletaingles</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompletaespanhol</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompletaitaliano</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq1c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq2c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq3c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq4c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq5c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq6c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq7c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq8c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq9c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq10c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgadt</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgadten</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgadtes</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd5</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd5en</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd5es</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd12</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd12en</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd12es</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idnethotel</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>regime</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>adicionalregime</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>naoreembolsavel</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>dtnr</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>ordem</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq1</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq2</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq3</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq4</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq5</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq6</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq7</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq8</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq9</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq10</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>virtual</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>autonomia</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>adicionalregimechd1</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>adicionalregimechd2</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-</tbody></table>
-<h1 id='acomodacoes-com-tarifario'>Acomodações com Tarifario</h1><h2 id='listar-acomodacoes-com-tarifario'>Listar acomodações com tarifario</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">request</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">"graphql-request"</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="s2">`{
-    acomodacoesComTarifario(acomodacaoComTarifarioSelect: { chave: "sua-chave", 
-                                                          mes: 6,
-                                                          ano: 2019}) 
-  {
-    nome
-  }
-}`</span><span class="p">;</span>
-</code></pre>
-<blockquote>
-<p>O comando de cima retornar o seguinte JSON</p>
-</blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"acomodacoes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Luxo"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 1 quarto com sala e cozinha"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Dupla - Ate 6 pessoas"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre><h3 id='argumentos'>Argumentos</h3>
-<table><thead>
-<tr>
-<th>Paramentro</th>
-<th>Tipo</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>chave</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>codhotel</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>mes</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>ano</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-</tbody></table>
-<h3 id='paramentros'>Paramentros</h3>
-<table><thead>
-<tr>
-<th>Paramentro</th>
-<th>Tipo</th>
-<th>Descrição</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>codhotel</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>nome</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>qtd</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>maxadt</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>maxchd5</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>chd5free</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>maxchd12</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>chd12free</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>minocup</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>maxocup</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>statuss</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricao</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>foto1</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>foto2</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>foto3</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>foto4</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>frigobar</td>
-<td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem tv normal slim, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>cofre</td>
 <td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>tvnormalslim</td>
-<td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem cofre, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>tvlcd</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem tv lcd, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>tvacabo</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem tv a cabo, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>arcondicionado</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem ar condicionado, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>arsplit</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem ar split, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>ventiladordeteto</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem ventilador de teto, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>fechaduraeletronica</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem fechadura eletronica, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>varandasacada</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodações têm varanda sacada, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>hidromassagem</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem hidromassagem, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>camabox</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem cama box, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>cortina</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem cortina, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>secador</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem secador, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>naofumante</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação é não fumante, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>cozinhacompleta</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem cozinha completa, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>saladeestar</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem sala de estar, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>conjugado</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem conjugado, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>telefone</td>
 <td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaoingles</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaoespanhol</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaoitaliano</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>nomeingles</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>nomeespanhol</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>nomeitaliano</td>
-<td>String</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem telefone, retornar Y (sim) ou N (Não)</td>
 </tr>
 <tr>
 <td>internet</td>
 <td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idchannel</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompleta</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompletaingles</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompletaespanhol</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>descricaocompletaitaliano</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq1c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq2c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq3c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq4c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq5c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq6c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq7c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq8c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq9c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq10c</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgadt</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgadten</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgadtes</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd5</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd5en</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd5es</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd12</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd12en</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>msgchd12es</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idnethotel</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>regime</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>adicionalregime</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>naoreembolsavel</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>dtnr</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>ordem</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq1</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq2</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq3</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq4</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq5</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq6</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq7</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq8</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq9</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>idq10</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>virtual</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>autonomia</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>adicionalregimechd1</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>adicionalregimechd2</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
+<td>Se acomodação tem acesso a internet, retornar Y (sim) ou N (Não)</td>
 </tr>
 </tbody></table>
-<h1 id='tarifarios'>Tarifarios</h1><h2 id='buscar-um-tarifario'>Buscar um tarifario</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">request</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">"graphql-request"</span><span class="p">;</span>
+<h1 id='tarifarios'>Tarifários</h1><h2 id='buscar-um-tarifario'>Buscar um tarifário</h2><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="p">{</span> <span class="nx">request</span> <span class="p">}</span> <span class="nx">from</span> <span class="s2">"graphql-request"</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="s2">`{
-  tarifarios(tarifarioSelect: { chave: "sua-chave",
-    mes: 1,
-    ano: 2019,
-    day1: 1, 
-    day2: 2, 
-    codhotel: "0019", 
-    acomodacao: "2"}) {
-    idtarifario
-    adicionalchd5
-    adicionalchd12
-    mes
-    ano
+  tarifarios(tarifarioSelect: { 
+    chave: "sua-chave",
+    codhotel: "0005",
+    acomodacao: 10,
+    ano_inicio: 2019,
+    ano_fim: 2019,
+    mes_inicio: 1,
+    mes_fim: 1,
+    dia_inicio: 15,
+    dia_fim: 25
   }
 }`</span><span class="p">;</span>
 </code></pre>
@@ -1298,9 +638,17 @@ Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"idtarifario"</span><span class="p">:</span><span class="w"> </span><span class="s2">"24268"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"adicionalchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"adicionalchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_15d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_16d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_17d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_18d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_19d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_20d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_21d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_22d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_23d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_24d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"col_25d1p"</span><span class="p">:</span><span class="w"> </span><span class="mi">390</span><span class="p">,</span><span class="w">
         </span><span class="s2">"mes"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"ano"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -1316,59 +664,49 @@ Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
 </tr>
 </thead><tbody>
 <tr>
-<td>top</td>
-<td>Int</td>
-<td>TODO: Descrição</td>
+<td>chave</td>
+<td>String</td>
+<td>Chave API</td>
 </tr>
 <tr>
 <td>codhotel</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Código do hotel (obrigtório)</td>
 </tr>
 <tr>
 <td>acomodacao</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>mes</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Id da acomodação</td>
 </tr>
 <tr>
-<td>ano</td>
+<td>ano_inicio</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Ano de inicio periodo dos tarifários</td>
 </tr>
 <tr>
-<td>dia</td>
+<td>ano_fim</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Ano de fim periodo dos tarifário</td>
 </tr>
 <tr>
-<td>pessoas</td>
+<td>mes_inicio</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Mês de inicio periodo dos tarifários</td>
 </tr>
 <tr>
-<td>day1</td>
+<td>mes_fim</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Mes de fim periodo dos tarifários</td>
 </tr>
 <tr>
-<td>day2</td>
+<td>dia_inicio</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Dia de inicio periodo dos tarifários</td>
 </tr>
 <tr>
-<td>orderBy</td>
-<td>String</td>
-<td>TODO: Descrição</td>
-</tr>
-<tr>
-<td>chave</td>
-<td>String</td>
-<td>TODO: Descrição</td>
+<td>dia_fim</td>
+<td>Int</td>
+<td>Dia de fim periodo dos tarifários</td>
 </tr>
 </tbody></table>
 <h3 id='paramentros'>Paramentros</h3>
@@ -1380,29 +718,1109 @@ Lembrese de trocar  <code>sua-chave</code> para sua chave de accesso
 </tr>
 </thead><tbody>
 <tr>
-<td>idtarifario</td>
+<td>codhotel</td>
 <td>String</td>
-<td>TODO: Descrição</td>
+<td>Código do hotel</td>
+</tr>
+<tr>
+<td>acomodacao</td>
+<td>String</td>
+<td>Id da acomodação</td>
 </tr>
 <tr>
 <td>mes</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Mes do tarifário</td>
 </tr>
 <tr>
 <td>ano</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Ano do tarifário</td>
 </tr>
 <tr>
-<td>adicionalchd5</td>
+<td>col_1d1p</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Tarifário do 1o diapara 1 pessoas</td>
 </tr>
 <tr>
-<td>adicionalchd12</td>
+<td>col_1d2p</td>
 <td>Int</td>
-<td>TODO: Descrição</td>
+<td>Tarifário do 1o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_1d3p</td>
+<td>Int</td>
+<td>Tarifário do 1o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_1d4p</td>
+<td>Int</td>
+<td>Tarifário do 1o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_1d5p</td>
+<td>Int</td>
+<td>Tarifário do 1o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_1dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 1ro dia</td>
+</tr>
+<tr>
+<td>col_1dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_2d1p</td>
+<td>Int</td>
+<td>Tarifário do 2o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_2d2p</td>
+<td>Int</td>
+<td>Tarifário do 2o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_2d3p</td>
+<td>Int</td>
+<td>Tarifário do 2o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_2d4p</td>
+<td>Int</td>
+<td>Tarifário do 2o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_2d5p</td>
+<td>Int</td>
+<td>Tarifário do 2o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_2dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 2o dia</td>
+</tr>
+<tr>
+<td>col_2dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_3d1p</td>
+<td>Int</td>
+<td>Tarifário do 3o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_3d2p</td>
+<td>Int</td>
+<td>Tarifário do 3o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_3d3p</td>
+<td>Int</td>
+<td>Tarifário do 3o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_3d4p</td>
+<td>Int</td>
+<td>Tarifário do 3o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_3d5p</td>
+<td>Int</td>
+<td>Tarifário do 3o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_3dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 3o dia</td>
+</tr>
+<tr>
+<td>col_3dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_4d1p</td>
+<td>Int</td>
+<td>Tarifário do 4o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_4d2p</td>
+<td>Int</td>
+<td>Tarifário do 4o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_4d3p</td>
+<td>Int</td>
+<td>Tarifário do 4o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_4d4p</td>
+<td>Int</td>
+<td>Tarifário do 4o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_4d5p</td>
+<td>Int</td>
+<td>Tarifário do 4o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_4dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 4o dia</td>
+</tr>
+<tr>
+<td>col_4dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_5d1p</td>
+<td>Int</td>
+<td>Tarifário do 5o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_5d2p</td>
+<td>Int</td>
+<td>Tarifário do 5o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_5d3p</td>
+<td>Int</td>
+<td>Tarifário do 5o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_5d4p</td>
+<td>Int</td>
+<td>Tarifário do 5o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_5d5p</td>
+<td>Int</td>
+<td>Tarifário do 5o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_5dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 5o dia</td>
+</tr>
+<tr>
+<td>col_5dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_6d1p</td>
+<td>Int</td>
+<td>Tarifário do 6o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_6d2p</td>
+<td>Int</td>
+<td>Tarifário do 6o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_6d3p</td>
+<td>Int</td>
+<td>Tarifário do 6o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_6d4p</td>
+<td>Int</td>
+<td>Tarifário do 6o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_6d5p</td>
+<td>Int</td>
+<td>Tarifário do 6o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_6dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 6o dia</td>
+</tr>
+<tr>
+<td>col_6dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_7d1p</td>
+<td>Int</td>
+<td>Tarifário do 7o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_7d2p</td>
+<td>Int</td>
+<td>Tarifário do 7o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_7d3p</td>
+<td>Int</td>
+<td>Tarifário do 7o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_7d4p</td>
+<td>Int</td>
+<td>Tarifário do 7o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_7d5p</td>
+<td>Int</td>
+<td>Tarifário do 7o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_7dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 7o dia</td>
+</tr>
+<tr>
+<td>col_7dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_8d1p</td>
+<td>Int</td>
+<td>Tarifário do 8o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_8d2p</td>
+<td>Int</td>
+<td>Tarifário do 8o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_8d3p</td>
+<td>Int</td>
+<td>Tarifário do 8o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_8d4p</td>
+<td>Int</td>
+<td>Tarifário do 8o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_8d5p</td>
+<td>Int</td>
+<td>Tarifário do 8o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_8dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 8o dia</td>
+</tr>
+<tr>
+<td>col_8dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_9d1p</td>
+<td>Int</td>
+<td>Tarifário do 9o diapara 1 pessoas</td>
+</tr>
+<tr>
+<td>col_9d2p</td>
+<td>Int</td>
+<td>Tarifário do 9o diapara 2 pessoas</td>
+</tr>
+<tr>
+<td>col_9d3p</td>
+<td>Int</td>
+<td>Tarifário do 9o diapara 3 pessoas</td>
+</tr>
+<tr>
+<td>col_9d4p</td>
+<td>Int</td>
+<td>Tarifário do 9o diapara 4 pessoas</td>
+</tr>
+<tr>
+<td>col_9d5p</td>
+<td>Int</td>
+<td>Tarifário do 9o diapara 5 pessoas</td>
+</tr>
+<tr>
+<td>col_9dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 9o dia</td>
+</tr>
+<tr>
+<td>col_9dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_10d1p</td>
+<td>Int</td>
+<td>Tarifário do 10o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_10d2p</td>
+<td>Int</td>
+<td>Tarifário do 10o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_10d3p</td>
+<td>Int</td>
+<td>Tarifário do 10o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_10d4p</td>
+<td>Int</td>
+<td>Tarifário do 10o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_10d5p</td>
+<td>Int</td>
+<td>Tarifário do 10o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_10dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 10o dia</td>
+</tr>
+<tr>
+<td>col_10dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_11d1p</td>
+<td>Int</td>
+<td>Tarifário do 11o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_11d2p</td>
+<td>Int</td>
+<td>Tarifário do 11o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_11d3p</td>
+<td>Int</td>
+<td>Tarifário do 11o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_11d4p</td>
+<td>Int</td>
+<td>Tarifário do 11o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_11d5p</td>
+<td>Int</td>
+<td>Tarifário do 11o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_11dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 11o dia</td>
+</tr>
+<tr>
+<td>col_11dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_12d1p</td>
+<td>Int</td>
+<td>Tarifário do 12o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_12d2p</td>
+<td>Int</td>
+<td>Tarifário do 12o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_12d3p</td>
+<td>Int</td>
+<td>Tarifário do 12o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_12d4p</td>
+<td>Int</td>
+<td>Tarifário do 12o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_12d5p</td>
+<td>Int</td>
+<td>Tarifário do 12o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_12dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 12o dia</td>
+</tr>
+<tr>
+<td>col_12dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_13d1p</td>
+<td>Int</td>
+<td>Tarifário do 13o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_13d2p</td>
+<td>Int</td>
+<td>Tarifário do 13o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_13d3p</td>
+<td>Int</td>
+<td>Tarifário do 13o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_13d4p</td>
+<td>Int</td>
+<td>Tarifário do 13o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_13d5p</td>
+<td>Int</td>
+<td>Tarifário do 13o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_13dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 13o dia</td>
+</tr>
+<tr>
+<td>col_13dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_14d1p</td>
+<td>Int</td>
+<td>Tarifário do 14o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_14d2p</td>
+<td>Int</td>
+<td>Tarifário do 14o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_14d3p</td>
+<td>Int</td>
+<td>Tarifário do 14o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_14d4p</td>
+<td>Int</td>
+<td>Tarifário do 14o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_14d5p</td>
+<td>Int</td>
+<td>Tarifário do 14o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_14dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 14o dia</td>
+</tr>
+<tr>
+<td>col_14dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_15d1p</td>
+<td>Int</td>
+<td>Tarifário do 15o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_15d2p</td>
+<td>Int</td>
+<td>Tarifário do 15o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_15d3p</td>
+<td>Int</td>
+<td>Tarifário do 15o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_15d4p</td>
+<td>Int</td>
+<td>Tarifário do 15o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_15d5p</td>
+<td>Int</td>
+<td>Tarifário do 15o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_15dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 15o dia</td>
+</tr>
+<tr>
+<td>col_15dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_16d1p</td>
+<td>Int</td>
+<td>Tarifário do 16o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_16d2p</td>
+<td>Int</td>
+<td>Tarifário do 16o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_16d3p</td>
+<td>Int</td>
+<td>Tarifário do 16o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_16d4p</td>
+<td>Int</td>
+<td>Tarifário do 16o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_16d5p</td>
+<td>Int</td>
+<td>Tarifário do 16o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_16dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 16o dia</td>
+</tr>
+<tr>
+<td>col_16dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_17d1p</td>
+<td>Int</td>
+<td>Tarifário do 17o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_17d2p</td>
+<td>Int</td>
+<td>Tarifário do 17o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_17d3p</td>
+<td>Int</td>
+<td>Tarifário do 17o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_17d4p</td>
+<td>Int</td>
+<td>Tarifário do 17o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_17d5p</td>
+<td>Int</td>
+<td>Tarifário do 17o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_17dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 17o dia</td>
+</tr>
+<tr>
+<td>col_17dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_18d1p</td>
+<td>Int</td>
+<td>Tarifário do 18o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_18d2p</td>
+<td>Int</td>
+<td>Tarifário do 18o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_18d3p</td>
+<td>Int</td>
+<td>Tarifário do 18o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_18d4p</td>
+<td>Int</td>
+<td>Tarifário do 18o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_18d5p</td>
+<td>Int</td>
+<td>Tarifário do 18o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_18dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 18o dia</td>
+</tr>
+<tr>
+<td>col_18dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_19d1p</td>
+<td>Int</td>
+<td>Tarifário do 19o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_19d2p</td>
+<td>Int</td>
+<td>Tarifário do 19o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_19d3p</td>
+<td>Int</td>
+<td>Tarifário do 19o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_19d4p</td>
+<td>Int</td>
+<td>Tarifário do 19o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_19d5p</td>
+<td>Int</td>
+<td>Tarifário do 19o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_19dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 19o dia</td>
+</tr>
+<tr>
+<td>col_19dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_20d1p</td>
+<td>Int</td>
+<td>Tarifário do 20o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_20d2p</td>
+<td>Int</td>
+<td>Tarifário do 20o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_20d3p</td>
+<td>Int</td>
+<td>Tarifário do 20o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_20d4p</td>
+<td>Int</td>
+<td>Tarifário do 20o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_20d5p</td>
+<td>Int</td>
+<td>Tarifário do 20o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_20dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 20o dia</td>
+</tr>
+<tr>
+<td>col_20dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_21d1p</td>
+<td>Int</td>
+<td>Tarifário do 21o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_21d2p</td>
+<td>Int</td>
+<td>Tarifário do 21o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_21d3p</td>
+<td>Int</td>
+<td>Tarifário do 21o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_21d4p</td>
+<td>Int</td>
+<td>Tarifário do 21o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_21d5p</td>
+<td>Int</td>
+<td>Tarifário do 21o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_21dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 21o dia</td>
+</tr>
+<tr>
+<td>col_21dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_22d1p</td>
+<td>Int</td>
+<td>Tarifário do 22o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_22d2p</td>
+<td>Int</td>
+<td>Tarifário do 22o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_22d3p</td>
+<td>Int</td>
+<td>Tarifário do 22o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_22d4p</td>
+<td>Int</td>
+<td>Tarifário do 22o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_22d5p</td>
+<td>Int</td>
+<td>Tarifário do 22o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_22dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 22o dia</td>
+</tr>
+<tr>
+<td>col_22dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_23d1p</td>
+<td>Int</td>
+<td>Tarifário do 23o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_23d2p</td>
+<td>Int</td>
+<td>Tarifário do 23o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_23d3p</td>
+<td>Int</td>
+<td>Tarifário do 23o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_23d4p</td>
+<td>Int</td>
+<td>Tarifário do 23o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_23d5p</td>
+<td>Int</td>
+<td>Tarifário do 23o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_23dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 23o dia</td>
+</tr>
+<tr>
+<td>col_23dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_24d1p</td>
+<td>Int</td>
+<td>Tarifário do 24o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_24d2p</td>
+<td>Int</td>
+<td>Tarifário do 24o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_24d3p</td>
+<td>Int</td>
+<td>Tarifário do 24o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_24d4p</td>
+<td>Int</td>
+<td>Tarifário do 24o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_24d5p</td>
+<td>Int</td>
+<td>Tarifário do 24o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_24dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 24o dia</td>
+</tr>
+<tr>
+<td>col_24dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_25d1p</td>
+<td>Int</td>
+<td>Tarifário do 25o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_25d2p</td>
+<td>Int</td>
+<td>Tarifário do 25o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_25d3p</td>
+<td>Int</td>
+<td>Tarifário do 25o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_25d4p</td>
+<td>Int</td>
+<td>Tarifário do 25o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_25d5p</td>
+<td>Int</td>
+<td>Tarifário do 25o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_25dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 25o dia</td>
+</tr>
+<tr>
+<td>col_25dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_26d1p</td>
+<td>Int</td>
+<td>Tarifário do 26o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_26d2p</td>
+<td>Int</td>
+<td>Tarifário do 26o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_26d3p</td>
+<td>Int</td>
+<td>Tarifário do 26o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_26d4p</td>
+<td>Int</td>
+<td>Tarifário do 26o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_26d5p</td>
+<td>Int</td>
+<td>Tarifário do 26o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_26dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 26o dia</td>
+</tr>
+<tr>
+<td>col_26dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_27d1p</td>
+<td>Int</td>
+<td>Tarifário do 27o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_27d2p</td>
+<td>Int</td>
+<td>Tarifário do 27o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_27d3p</td>
+<td>Int</td>
+<td>Tarifário do 27o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_27d4p</td>
+<td>Int</td>
+<td>Tarifário do 27o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_27d5p</td>
+<td>Int</td>
+<td>Tarifário do 27o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_27dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 27o dia</td>
+</tr>
+<tr>
+<td>col_27dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_28d1p</td>
+<td>Int</td>
+<td>Tarifário do 28o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_28d2p</td>
+<td>Int</td>
+<td>Tarifário do 28o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_28d3p</td>
+<td>Int</td>
+<td>Tarifário do 28o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_28d4p</td>
+<td>Int</td>
+<td>Tarifário do 28o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_28d5p</td>
+<td>Int</td>
+<td>Tarifário do 28o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_28dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 28o dia</td>
+</tr>
+<tr>
+<td>col_28dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_29d1p</td>
+<td>Int</td>
+<td>Tarifário do 29o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_29d2p</td>
+<td>Int</td>
+<td>Tarifário do 29o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_29d3p</td>
+<td>Int</td>
+<td>Tarifário do 29o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_29d4p</td>
+<td>Int</td>
+<td>Tarifário do 29o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_29d5p</td>
+<td>Int</td>
+<td>Tarifário do 29o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_29dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 29o dia</td>
+</tr>
+<tr>
+<td>col_29dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_30d1p</td>
+<td>Int</td>
+<td>Tarifário do 30o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_30d2p</td>
+<td>Int</td>
+<td>Tarifário do 30o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_30d3p</td>
+<td>Int</td>
+<td>Tarifário do 30o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_30d4p</td>
+<td>Int</td>
+<td>Tarifário do 30o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_30d5p</td>
+<td>Int</td>
+<td>Tarifário do 30o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_30dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 30o dia</td>
+</tr>
+<tr>
+<td>col_30dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
+</tr>
+<tr>
+<td>col_31d1p</td>
+<td>Int</td>
+<td>Tarifário do 31o dia para 1 pessoas</td>
+</tr>
+<tr>
+<td>col_31d2p</td>
+<td>Int</td>
+<td>Tarifário do 31o dia para 2 pessoas</td>
+</tr>
+<tr>
+<td>col_31d3p</td>
+<td>Int</td>
+<td>Tarifário do 31o dia para 3 pessoas</td>
+</tr>
+<tr>
+<td>col_31d4p</td>
+<td>Int</td>
+<td>Tarifário do 31o dia para 4 pessoas</td>
+</tr>
+<tr>
+<td>col_31d5p</td>
+<td>Int</td>
+<td>Tarifário do 31o dia para 5 pessoas</td>
+</tr>
+<tr>
+<td>col_31dv</td>
+<td>Int</td>
+<td>Vagas disponíveis do 31o dia</td>
+</tr>
+<tr>
+<td>col_31dm</td>
+<td>Int</td>
+<td>Mínimo de pessoas por acomodação</td>
 </tr>
 </tbody></table>
 
