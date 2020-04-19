@@ -3,7 +3,7 @@
 ## Buscar todas as acomodações
 
 ```shell
-curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes"
   -H "Authorization: sua-chave"
 ```
 
@@ -11,7 +11,7 @@ curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes"
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.crhoteisbrasil.com.br/api/v1",
+  baseURL: "https://restapi.crhoteisbrasil.com.br/api/v1",
   timeout: 1000,
   headers: { Authorization: "sua-chave" },
 });
@@ -21,7 +21,7 @@ api
   .then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrura JSON da seguinte maneira.
+> O comando de cima retornar uma estrutura JSON da seguinte maneira.
 
 ```json
 {
@@ -100,14 +100,14 @@ Este endpoint retornar todos as acomodações com acesso.
 
 ### Request HTTP
 
-`GET https://api.crhoteisbrasil.com.br/api/v1/hoteis/<codhotel>/acomodacoes`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes`
 
-### Parametros de retorno
+### Parâmetros de retorno
 
 | Parâmetro           | Descrição                                                        |
 | ------------------- | ---------------------------------------------------------------- |
-| idacomodacao        | ID unico da acomodação.                                          |
-| codhotel            | Codigo do hotel que acomodação pertecem.                         |
+| idacomodacao        | ID único da acomodação.                                          |
+| codhotel            | Código do hotel que acomodação pertencem.                        |
 | nome                | Nome da acomodação.                                              |
 | maxadt              | Número máximo de adultos permitidos.                             |
 | maxchd5             | Número máximo de crianças até 5 anos permitidas.                 |
@@ -122,26 +122,26 @@ Este endpoint retornar todos as acomodações com acesso.
 | tvnormalslim        | Se tem tvnormalslim ("Y" = Sim ou "N" = Não)                     |
 | tvlcd               | Se tem tvlcd ("Y" = Sim ou "N" = Não)                            |
 | tvacabo             | Se tem tvacabo ("Y" = Sim ou "N" = Não)                          |
-| arcondicionado      | Se tem arcondicionado ("Y" = Sim ou "N" = Não)                   |
+| arcondicionado      | Se tem ar condicionado ("Y" = Sim ou "N" = Não)                  |
 | arsplit             | Se tem arsplit ("Y" = Sim ou "N" = Não)                          |
-| ventiladordeteto    | Se tem ventiladordeteto ("Y" = Sim ou "N" = Não)                 |
-| fechaduraeletronica | Se tem fechaduraeletronica ("Y" = Sim ou "N" = Não)              |
-| varandasacada       | Se tem varandasacada ("Y" = Sim ou "N" = Não)                    |
+| ventiladordeteto    | Se tem ventilador de teto ("Y" = Sim ou "N" = Não)               |
+| fechaduraeletronica | Se tem fechadura eletronica ("Y" = Sim ou "N" = Não)             |
+| varandasacada       | Se tem varanda ou sacada ("Y" = Sim ou "N" = Não)                |
 | hidromassagem       | Se tem hidromassagem ("Y" = Sim ou "N" = Não)                    |
 | camabox             | Se tem camabox ("Y" = Sim ou "N" = Não)                          |
 | cortina             | Se tem cortina ("Y" = Sim ou "N" = Não)                          |
 | secador             | Se tem secador ("Y" = Sim ou "N" = Não)                          |
-| naofumante          | Se tem naofumante ("Y" = Sim ou "N" = Não)                       |
+| naofumante          | Se tem nao fumante ("Y" = Sim ou "N" = Não)                      |
 | cozinhacompleta     | Se tem cozinhacompleta ("Y" = Sim ou "N" = Não)                  |
-| saladeestar         | Se tem saladeestar ("Y" = Sim ou "N" = Não)                      |
+| saladeestar         | Se tem sala de estar ("Y" = Sim ou "N" = Não)                    |
 | conjugado           | Se tem conjugado ("Y" = Sim ou "N" = Não)                        |
 | telefone            | Se tem telefone ("Y" = Sim ou "N" = Não)                         |
 | internet            | Se tem internet ("Y" = Sim ou "N" = Não)                         |
 
-## Buscar uma acomodação especifica
+## Buscar uma acomodação
 
 ```shell
-curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes/2"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes/2"
   -H "Authorization: sua-chave"
 ```
 
@@ -149,7 +149,7 @@ curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes/2"
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.crhoteisbrasil.com.br/api/v1",
+  baseURL: "https://restapi.crhoteisbrasil.com.br/api/v1",
   timeout: 1000,
   headers: { Authorization: "sua-chave" },
 });
@@ -159,7 +159,7 @@ api
   .then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrura JSON da seguinte maneira.
+> O comando de cima retornar uma estrutura JSON da seguinte maneira.
 
 ```json
 {
@@ -201,6 +201,6 @@ api
 
 ### HTTP Request
 
-`GET https://api.crhoteisbrasil.com.br/api/v1/hoteis/<codhotel>/acomodacoes/<ID>`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes/:id`
 
-O mesmo paramentros de retorno são respeitados para busca de uma acomodação.
+O mesmo parâmentros de retorno são respeitados para busca de uma acomodação.

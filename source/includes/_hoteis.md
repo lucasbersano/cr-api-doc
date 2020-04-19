@@ -3,7 +3,7 @@
 ## Buscar todos os hoteis
 
 ```shell
-curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"
   -H "Authorization: sua-chave"
 ```
 
@@ -11,7 +11,7 @@ curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis"
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.crhoteisbrasil.com.br/api/v1",
+  baseURL: "https://restapi.crhoteisbrasil.com.br/api/v1",
   timeout: 1000,
   headers: { Authorization: "sua-chave" },
 });
@@ -19,7 +19,7 @@ const api = axios.create({
 api.get("/hoteis").then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrura JSON da seguinte maneira.
+> O comando de cima retornar uma estrutura JSON da seguinte maneira.
 
 ```json
 {
@@ -41,19 +41,19 @@ api.get("/hoteis").then((response) => console.log(response.data));
 }
 ```
 
-Este endpoint retornar todos os hoteis com accesso
+Este endpoint retornar todos os hotéis.
 
 ### Request HTTP
 
-`GET https://api.crhoteisbrasil.com.br/api/v1/hoteis`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis`
 
-### Parametros de retorno
+### Parâmetros de retorno
 
 | Parâmetro     | Descrição           |
 | ------------- | ------------------- |
 | codhotel      | Código do hotel     |
 | nomehotel     | Nome do hotel       |
-| descricao     | Decrição do hotel   |
+| descricao     | Descrição do hotel  |
 | endereco      | Endereço do hotel   |
 | bairro        | Barrio do hotel     |
 | cidade        | Cidade do hotel     |
@@ -63,10 +63,10 @@ Este endpoint retornar todos os hoteis com accesso
 | fone          | Telefone de contato |
 | emailreservas | Email de reservas   |
 
-## Buscar um hotel especifico
+## Buscar um hotel
 
 ```shell
-curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis/0019"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019"
   -H "Authorization: sua-chave"
 ```
 
@@ -74,7 +74,7 @@ curl "https://api.crhoteisbrasil.com.br/api/v1/hoteis/0019"
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://api.crhoteisbrasil.com.br/api/v1",
+  baseURL: "https://restapi.crhoteisbrasil.com.br/api/v1",
   timeout: 1000,
   headers: { Authorization: "sua-chave" },
 });
@@ -82,7 +82,7 @@ const api = axios.create({
 api.get("/hoteis/0019").then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrura JSON da seguinte maneira.
+> O comando de cima retornar uma estrutura JSON da seguinte maneira.
 
 ```json
 {
@@ -104,6 +104,6 @@ api.get("/hoteis/0019").then((response) => console.log(response.data));
 
 ### HTTP Request
 
-`GET https://api.crhoteisbrasil.com.br/api/v1/hoteis/:id`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:id`
 
-O mesmo paramentros de retorno são respeitados para busca de um hotel
+O mesmo parâmetros de retorno são respeitados para busca de um hotel.
