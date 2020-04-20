@@ -695,19 +695,18 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes/:id</code></p>
 
 <p>O mesmo parâmentros de retorno são respeitados para busca de uma acomodação.</p>
-<h1 id='tarifarios'>Tarifários</h1><h2 id='buscar-todas-os-tarifarios-e-acomdacoas'>Buscar todas os tarifarios e acomdaçõas</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/tarifario?inicio=2019-02-27&amp;fim=2019-03-03&amp;pessoas=3"</span>
+<h1 id='tarifarios'>Tarifários</h1><h2 id='buscar-todas-os-tarifarios-e-acomdacoas'>Buscar todas os tarifarios e acomdaçõas</h2><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"http://localhost:3000/api/v1/hoteis/0019/tarifario?inicio=2019-02-27&amp;fim=2019-03-01&amp;pessoas=3"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
-  <span class="na">baseURL</span><span class="p">:</span>
-    <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/tarifario?inicio=2019-02-27&amp;fim=2019-03-03&amp;pessoas=3"</span><span class="p">,</span>
+  <span class="na">baseURL</span><span class="p">:</span> <span class="s2">"http://localhost:3000/api/v1"</span><span class="p">,</span>
   <span class="na">timeout</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"sua-chave"</span> <span class="p">},</span>
 <span class="p">});</span>
 
 <span class="nx">api</span>
-  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hoteis/0019/tarifario?inicio=2021-02-25&amp;fim=2021-03-05&amp;pessoas=3"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hoteis/0019/tarifario?inicio=2019-02-27&amp;fim=2019-03-01&amp;pessoas=3"</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre>
 <blockquote>
@@ -717,6 +716,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
   </span><span class="s2">"acomodacoes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -725,27 +725,17 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/2/1.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"2021-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
@@ -753,11 +743,12 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
         </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">4640</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2240</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Luxo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite com ar split, frigobar,  tv lcd 32 e cofre."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
@@ -766,39 +757,30 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/21/1.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"2021-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1980</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">940</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 1 quarto com sala e cozinha"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 quarto com ar split, banheiro social, sala com ventilador de teto, tv lcd, cofre, cozinha completa e area de serviço."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -807,39 +789,30 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/27/1.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"2021-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">560</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">560</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">560</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2140</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">192</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Dupla - Ate 6 pessoas"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 suítes com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -848,27 +821,17 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/192/1.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"2021-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">380</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">380</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-2"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2021-3-3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span><span class="w">
           </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
           </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
@@ -876,7 +839,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
         </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
         </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">3400</span><span class="w">
+        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -926,6 +889,10 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <td>ID único da acomodação.</td>
 </tr>
 <tr>
+<td>nome</td>
+<td>Nome da acomodação</td>
+</tr>
+<tr>
 <td>descricao</td>
 <td>Codigo do hotel que acomodação pertecem.</td>
 </tr>
@@ -971,11 +938,15 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 <tr>
 <td>tarifario[data].dm</td>
-<td>Minimo de ocupação permitido para a data.</td>
+<td>Mínimo de ocupação permitido para a data.</td>
+</tr>
+<tr>
+<td>tarifario[data].dv</td>
+<td>Quantidade de vagas disponíveis.</td>
 </tr>
 <tr>
 <td>tarifario.minimo</td>
-<td>Minimo requerido para a data pesquisada.</td>
+<td>Mínimo requerido para a data pesquisada.</td>
 </tr>
 <tr>
 <td>tarifario.regra_minimo</td>
