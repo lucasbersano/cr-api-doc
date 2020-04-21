@@ -239,7 +239,7 @@ api
 > O comando de cima retornar uma estrutura JSON da seguinte maneira.
 
 ```json
-{ "msg": "tarifa criado com sucesso" }
+{ "msg": "tarifa criada com sucesso" }
 ```
 
 Para criar ou atualizar um tarifário, passe o periodo que deseja atualizar e o tarifario para cada quantidade de pessoas.
