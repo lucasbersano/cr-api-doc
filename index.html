@@ -226,13 +226,13 @@
             <a href="#autenticacao" class="toc-h1 toc-link" data-title="Autenticação">Autenticação</a>
           </li>
           <li>
-            <a href="#hoteis" class="toc-h1 toc-link" data-title="Hoteis">Hoteis</a>
+            <a href="#hoteis" class="toc-h1 toc-link" data-title="Hotéis">Hotéis</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#buscar-todos-os-hoteis" class="toc-h2 toc-link" data-title="Buscar todos os hoteis">Buscar todos os hoteis</a>
+                    <a href="#buscar-todos-os-estabelecimentos" class="toc-h2 toc-link" data-title="Buscar todos os estabelecimentos">Buscar todos os estabelecimentos</a>
                   </li>
                   <li>
-                    <a href="#buscar-um-hotel" class="toc-h2 toc-link" data-title="Buscar um hotel">Buscar um hotel</a>
+                    <a href="#buscar-um-estabelecimento" class="toc-h2 toc-link" data-title="Buscar um estabelecimento">Buscar um estabelecimento</a>
                   </li>
               </ul>
           </li>
@@ -240,7 +240,7 @@
             <a href="#acomodacoes" class="toc-h1 toc-link" data-title="Acomodações">Acomodações</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#buscar-todas-as-acomodacoes" class="toc-h2 toc-link" data-title="Buscar todas as acomodações">Buscar todas as acomodações</a>
+                    <a href="#buscar-todas-as-acomodacoes-de-um-estabelecimento" class="toc-h2 toc-link" data-title="Buscar todas as acomodações de um estabelecimento">Buscar todas as acomodações de um estabelecimento</a>
                   </li>
                   <li>
                     <a href="#buscar-uma-acomodacao" class="toc-h2 toc-link" data-title="Buscar uma acomodação">Buscar uma acomodação</a>
@@ -251,7 +251,7 @@
             <a href="#tarifarios" class="toc-h1 toc-link" data-title="Tarifários">Tarifários</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#buscar-todas-os-tarifarios-e-acomdacoas" class="toc-h2 toc-link" data-title="Buscar todas os tarifarios e acomdaçõas">Buscar todas os tarifarios e acomdaçõas</a>
+                    <a href="#buscar-tarifarios-de-acomdacoas" class="toc-h2 toc-link" data-title="Buscar tarifarios de acomdaçõas">Buscar tarifarios de acomdaçõas</a>
                   </li>
                   <li>
                     <a href="#criar-um-tarifario" class="toc-h2 toc-link" data-title="Criar um tarifario">Criar um tarifario</a>
@@ -264,12 +264,14 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introducao'>Introdução</h1>
-<p>Bem-vindo a documentação do Atendimento Total. A API é baseada no padrão REST. Todas as requisições precisa de uma chave api. Entre em contato com seu administrador para obter sua chave de acesso.</p>
+<p>Bem-vindo a documentação do Atendimento Total. A API é baseada no padrão REST. Todas as requisições precisam de uma chave api. Entre em contato com nosso time de parcerias para obter sua chave de acesso.</p>
 
-<p>O endpoint de produção: <code>https://restapi.crhoteisbrasil.com.br</code></p>
+<p>Endpoint de test: <code>https://staging.crhoteisbrasil.com.br</code></p>
+
+<p>Endpoint de produção: <code>https://restapi.crhoteisbrasil.com.br</code></p>
 <h1 id='autenticacao'>Autenticação</h1>
 <blockquote>
-<p>Todas as chamas devem enviar a chave de API dentro do cabecalho de &quot;Authorization&quot;. Segue um exemplo</p>
+<p>Todas as chamadas devem enviar a chave de API dentro do cabecalho de &quot;Authorization&quot;.</p>
 </blockquote>
 <pre class="highlight shell tab-shell"><code><span class="c">#  Com o shell, é possível passar a chave na chamada.</span>
 curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</span>
@@ -290,8 +292,8 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <p>Lembre-se de trocar <code>sua-chave</code> para sua chave de acesso.</p>
 </blockquote>
 
-<p>API do atendimento total precisa de chaves de acesso no header Authentication em todas as requisições feitas. Caso a chave não esteja na requisição ou esteja incorreta, uma mensagem de não autorizado será retornada.</p>
-<h1 id='hoteis'>Hoteis</h1><h2 id='buscar-todos-os-hoteis'>Buscar todos os hoteis</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</span>
+<p>A API necessita de chaves de acesso no header Authentication em todas as requisições feitas. Caso a chave não esteja na requisição ou esteja incorreta, uma mensagem de não autorizado será retornada.</p>
+<h1 id='hoteis'>Hotéis</h1><h2 id='buscar-todos-os-estabelecimentos'>Buscar todos os estabelecimentos</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
@@ -301,7 +303,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"sua-chave"</span> <span class="p">},</span>
 <span class="p">});</span>
 
-<span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hoteis"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hotels"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre>
 <blockquote>
 <p>O comando de cima retornar uma estrutura JSON da seguinte maneira.</p>
@@ -309,24 +311,24 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"hoteis"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"codhotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nomehotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aquaville Hotel"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Hotel Aquaville"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Beira M"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"bairro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Praia Linda"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porto Seguro"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"estado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BA"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="mi">45810000</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7332680124"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"emailreservas"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="w">
+      </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aquaville Hotel"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Hotel Aquaville"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Beira M"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Praia Linda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porto Seguro"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelPostal"</span><span class="p">:</span><span class="w"> </span><span class="mi">45810000</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7332680124"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Este endpoint retornar todos os hotéis.</p>
+<p>Este endpoint retorna todos os estabelecimentos.</p>
 <h3 id='request-http'>Request HTTP</h3>
-<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis</code></p>
+<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels</code></p>
 <h3 id='parametros-de-retorno'>Parâmetros de retorno</h3>
 <table><thead>
 <tr>
@@ -335,51 +337,51 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 </thead><tbody>
 <tr>
-<td>codhotel</td>
-<td>Código do hotel</td>
+<td>hotelId</td>
+<td>Código interno do estabelecimento</td>
 </tr>
 <tr>
-<td>nomehotel</td>
-<td>Nome do hotel</td>
+<td>hotelName</td>
+<td>Nome do estabelecimento</td>
 </tr>
 <tr>
-<td>descricao</td>
-<td>Descrição do hotel</td>
+<td>hotelDescription</td>
+<td>Descrição do estabelecimento</td>
 </tr>
 <tr>
-<td>endereco</td>
-<td>Endereço do hotel</td>
+<td>hotelAddress</td>
+<td>Endereço do estabelecimento</td>
 </tr>
 <tr>
-<td>bairro</td>
-<td>Barrio do hotel</td>
+<td>hotelZone</td>
+<td>Bairro do estabelecimento</td>
 </tr>
 <tr>
-<td>cidade</td>
-<td>Cidade do hotel</td>
+<td>hotelCity</td>
+<td>Cidade do estabelecimento</td>
 </tr>
 <tr>
-<td>estado</td>
-<td>Estado do hotel</td>
+<td>hotelState</td>
+<td>Estado do estabelecimento</td>
 </tr>
 <tr>
-<td>cep</td>
-<td>CEP do hotel</td>
+<td>hotelPostal</td>
+<td>CEP do estabelecimento</td>
 </tr>
 <tr>
-<td>cnpj</td>
-<td>CNPJ do hotel</td>
+<td>hotelDocument</td>
+<td>CNPJ do estabelecimento</td>
 </tr>
 <tr>
-<td>fone</td>
+<td>hotelPhone</td>
 <td>Telefone de contato</td>
 </tr>
 <tr>
-<td>emailreservas</td>
+<td>hotelEmail</td>
 <td>Email de reservas</td>
 </tr>
 </tbody></table>
-<h2 id='buscar-um-hotel'>Buscar um hotel</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019"</span>
+<h2 id='buscar-um-estabelecimento'>Buscar um estabelecimento</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
@@ -389,31 +391,31 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"sua-chave"</span> <span class="p">},</span>
 <span class="p">});</span>
 
-<span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hoteis/0019"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hotels/0019"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre>
 <blockquote>
 <p>O comando de cima retornar uma estrutura JSON da seguinte maneira.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"hotel"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"codhotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"nomehotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aquaville Hotel"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Beira M"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"bairro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Praia Linda"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porto Seguro"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"estado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BA"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="mi">45810000</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cnpj"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7332680124"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"emailreservas"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="w">
+    </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aquaville Hotel"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelDescription"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelAddress"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Av Beira M"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelZone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Praia Linda"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelCity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Porto Seguro"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelState"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BA"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelPostal"</span><span class="p">:</span><span class="w"> </span><span class="mi">45810000</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7332680124"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:id</code></p>
+<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotel/:id</code></p>
 
 <p>O mesmo parâmetros de retorno são respeitados para busca de um hotel.</p>
-<h1 id='acomodacoes'>Acomodações</h1><h2 id='buscar-todas-as-acomodacoes'>Buscar todas as acomodações</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes"</span>
+<h1 id='acomodacoes'>Acomodações</h1><h2 id='buscar-todas-as-acomodacoes-de-um-estabelecimento'>Buscar todas as acomodações de um estabelecimento</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/rooms"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
@@ -423,87 +425,85 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"sua-chave"</span> <span class="p">},</span>
 <span class="p">});</span>
 
-<span class="nx">api</span>
-  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hoteis/0019/acomodacoes"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hotels/0019/rooms"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre>
 <blockquote>
-<p>O comando de cima retornar uma estrutura JSON da seguinte maneira.</p>
+<p>O comando acima retorna uma estrutura JSON:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"acomodacoes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"codhotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"chd5free"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"chd12free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"frigobar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cofre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tvnormalslim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tvlcd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tvacabo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"arcondicionado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"arsplit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ventiladordeteto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fechaduraeletronica"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"varandasacada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hidromassagem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"camabox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cortina"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"naofumante"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cozinhacompleta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"saladeestar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"conjugado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"telefone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxAdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chd5Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chd12Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minibar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"safeBox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"NormalTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"LedTV"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cableTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"airConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"splitAirConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"electronicDoorLock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balcony"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jacuzzi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"queenBoxBed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"curtain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hairDryer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nonSmoking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kitchen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"living"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"connectingRoom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"internet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"codhotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Luxo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"chd5free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"chd12free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"minocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite com ar split, frigobar,  tv lcd 32 e cofre."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"frigobar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cofre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tvnormalslim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tvlcd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tvacabo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"arcondicionado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"arsplit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"ventiladordeteto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"fechaduraeletronica"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"varandasacada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hidromassagem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"camabox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cortina"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"secador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"naofumante"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"cozinhacompleta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"saladeestar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"conjugado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"telefone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomId"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Luxo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxAdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chd5Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"chd12Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite com ar split, frigobar,  tv lcd 32 e cofre."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minibar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"safeBox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"NormalTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"LedTV"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cableTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"airConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"splitAirConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"electronicDoorLock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"balcony"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"jacuzzi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"queenBoxBed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"curtain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hairDryer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nonSmoking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"kitchen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"living"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"connectingRoom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"internet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Este endpoint retornar todos as acomodações com acesso.</p>
+<p>Este endpoint retorna todos as acomodações com acesso do parceiro</p>
 <h3 id='request-http'>Request HTTP</h3>
-<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes</code></p>
+<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels/:hotelId/rooms</code></p>
 <h3 id='parametros-de-retorno'>Parâmetros de retorno</h3>
 <table><thead>
 <tr>
@@ -512,123 +512,123 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 </thead><tbody>
 <tr>
-<td>idacomodacao</td>
+<td>roomId</td>
 <td>ID único da acomodação.</td>
 </tr>
 <tr>
-<td>codhotel</td>
-<td>Código do hotel que acomodação pertencem.</td>
+<td>hotelId</td>
+<td>Código do estabelecimento que acomodação pertencem.</td>
 </tr>
 <tr>
-<td>nome</td>
+<td>roomName</td>
 <td>Nome da acomodação.</td>
 </tr>
 <tr>
-<td>maxadt</td>
+<td>maxAdt</td>
 <td>Número máximo de adultos permitidos.</td>
 </tr>
 <tr>
-<td>maxchd5</td>
+<td>maxChd5</td>
 <td>Número máximo de crianças até 5 anos permitidas.</td>
 </tr>
 <tr>
-<td>chd5free</td>
-<td>Número máximo de crianças até 5 anos permitidas sem pagar taxa.</td>
+<td>chd5Free</td>
+<td>Número máximo de crianças até 5 anos permitidas sem pagar adicional.</td>
 </tr>
 <tr>
-<td>maxchd12</td>
+<td>maxChd12</td>
 <td>Número máximo de crianças até 12 anos permitidas.</td>
 </tr>
 <tr>
-<td>chd12free</td>
-<td>Número máximo de crianças até 12 anos permitidas sem pagar taxa.</td>
+<td>chd12Free</td>
+<td>Número máximo de crianças até 12 anos permitidas sem pagar adicional.</td>
 </tr>
 <tr>
-<td>minocup</td>
+<td>minOccupation</td>
 <td>Mínimos permitido de acupação</td>
 </tr>
 <tr>
-<td>maxocup</td>
+<td>maxOccupation</td>
 <td>Máximo permitido de acupação</td>
 </tr>
 <tr>
-<td>descricao</td>
+<td>roomDescription</td>
 <td>Descrição da acomodação.</td>
 </tr>
 <tr>
-<td>frigobar</td>
+<td>minibar</td>
 <td>Se tem frigobar (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>cofre</td>
+<td>safeBox</td>
 <td>Se tem cofre (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>tvnormalslim</td>
+<td>NormalTv</td>
 <td>Se tem tvnormalslim (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>tvlcd</td>
+<td>LedTV</td>
 <td>Se tem tvlcd (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>tvacabo</td>
+<td>cableTv</td>
 <td>Se tem tvacabo (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>arcondicionado</td>
+<td>airConditioning</td>
 <td>Se tem ar condicionado (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>arsplit</td>
+<td>splitAirConditioning</td>
 <td>Se tem arsplit (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>ventiladordeteto</td>
+<td>fan</td>
 <td>Se tem ventilador de teto (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>fechaduraeletronica</td>
+<td>electronicDoorLock</td>
 <td>Se tem fechadura eletronica (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>varandasacada</td>
+<td>balcony</td>
 <td>Se tem varanda ou sacada (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>hidromassagem</td>
+<td>jacuzzi</td>
 <td>Se tem hidromassagem (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>camabox</td>
+<td>queenBoxBed</td>
 <td>Se tem camabox (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>cortina</td>
+<td>curtain</td>
 <td>Se tem cortina (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>secador</td>
+<td>hairDryer</td>
 <td>Se tem secador (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>naofumante</td>
+<td>nonSmoking</td>
 <td>Se tem nao fumante (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>cozinhacompleta</td>
+<td>kitchen</td>
 <td>Se tem cozinhacompleta (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>saladeestar</td>
+<td>living</td>
 <td>Se tem sala de estar (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>conjugado</td>
+<td>connectingRoom</td>
 <td>Se tem conjugado (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>telefone</td>
+<td>telephone</td>
 <td>Se tem telefone (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
@@ -636,7 +636,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <td>Se tem internet (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 </tbody></table>
-<h2 id='buscar-uma-acomodacao'>Buscar uma acomodação</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes/2"</span>
+<h2 id='buscar-uma-acomodacao'>Buscar uma acomodação</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/rooms/2"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
@@ -646,53 +646,51 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"sua-chave"</span> <span class="p">},</span>
 <span class="p">});</span>
 
-<span class="nx">api</span>
-  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hoteis/0019/acomodacoes/2"</span><span class="p">)</span>
-  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+<span class="nx">api</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hotels/0019/rooms/2"</span><span class="p">).</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre>
 <blockquote>
-<p>O comando de cima retornar uma estrutura JSON da seguinte maneira.</p>
+<p>O comando acima retorna uma estrutura JSON:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"acomodacao"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"codhotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chd5free"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"chd12free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"minocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"maxocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"frigobar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cofre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tvnormalslim"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tvlcd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"tvacabo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arcondicionado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"arsplit"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"ventiladordeteto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fechaduraeletronica"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"varandasacada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hidromassagem"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"camabox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cortina"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"secador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"naofumante"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"cozinhacompleta"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"saladeestar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"conjugado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"telefone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"roomId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"roomName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxAdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxChd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"chd5Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxChd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"chd12Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"maxOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"roomDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"minibar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"safeBox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"NormalTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"LedTV"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cableTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"airConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"splitAirConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fan"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"electronicDoorLock"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"balcony"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"jacuzzi"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"queenBoxBed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"curtain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hairDryer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"nonSmoking"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"kitchen"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"living"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"connectingRoom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"telephone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"internet"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes/:id</code></p>
+<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels/:hotelId/rooms/:roomId</code></p>
 
-<p>O mesmo parâmentros de retorno são respeitados para busca de uma acomodação.</p>
-<h1 id='tarifarios'>Tarifários</h1><h2 id='buscar-todas-os-tarifarios-e-acomdacoas'>Buscar todas os tarifarios e acomdaçõas</h2><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"http://localhost:3000/api/v1/hoteis/0019/tarifario?inicio=2019-02-27&amp;fim=2019-03-01&amp;pessoas=3"</span>
+<p>Os mesmos parâmentros de retorno são respeitados para busca de uma acomodação.</p>
+<h1 id='tarifarios'>Tarifários</h1><h2 id='buscar-tarifarios-de-acomdacoas'>Buscar tarifarios de acomdaçõas</h2><pre class="highlight shell tab-shell"><code>  curl <span class="s2">"http://localhost:3000/api/v1/hotels/0019/rates?checkin=2019-02-27&amp;checkout=2019-03-01&amp;adults=3"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
@@ -703,148 +701,88 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <span class="p">});</span>
 
 <span class="nx">api</span>
-  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hoteis/0019/tarifario?inicio=2019-02-27&amp;fim=2019-03-01&amp;pessoas=3"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hotels/0019/rates?checkin=2019-02-27&amp;checkout=2019-03-01&amp;adults=3"</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre>
 <blockquote>
 <p>O comando de cima retornar uma estrutura JSON da seguinte maneira.</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"acomodacoes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="s2">"rooms"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/2/1.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"roomId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="w">
+      </span><span class="s2">"roomDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxAdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomMeal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/2/1.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availabilityNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availabilityNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availabilityNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">2240</span><span class="w">
+        </span><span class="s2">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimumRule"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generalAvailability"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">2240</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Luxo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite com ar split, frigobar,  tv lcd 32 e cofre."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/21/1.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"roomId"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Luxo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite com ar split, frigobar,  tv lcd 32 e cofre."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxAdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxChd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"minOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"maxOccupation"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomMeal"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/21/1.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availabilityNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">210</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availabilityNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
+          </span><span class="s2">"price"</span><span class="p">:</span><span class="w"> </span><span class="mi">520</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"availabilityNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">940</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">27</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 1 quarto com sala e cozinha"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1 quarto com ar split, banheiro social, sala com ventilador de teto, tv lcd, cofre, cozinha completa e area de serviço."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/27/1.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">230</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">560</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1020</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"idacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="mi">192</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Dupla - Ate 6 pessoas"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"descricao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2 suítes com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxadt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxchd12"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"maxocup"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"foto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/192/1.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"tarifarios"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"2019-2-27"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">380</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2019-2-28"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">380</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dv"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"2019-3-1"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">880</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"dm"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"minimo"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"regra_minimo"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"disponibilidade"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">1640</span><span class="w">
+        </span><span class="s2">"minimum"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"minimumRule"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"generalAvailability"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">940</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<p>Este endpoint retornar as acomodações com tarifário do hotel. Obrigatório passar o código do hotel, data de início e fim e quantidade de pessoas. Se passar o <code>id</code> de uma acomodação no parametros, só será pesquisado a disponibilidade dessa acomodação.</p>
+<p>Este endpoint retorna as acomodações com tarifário do estabelecimento. Obrigatório passar o código do estabelecimento, período e quantidade de pessoas. Se passar o id de uma acomodação no parametros, só será pesquisado a disponibilidade dessa acomodação.</p>
 <h3 id='request-http'>Request HTTP</h3>
-<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/tarifario</code></p>
+<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels/:hotelId/rates</code></p>
 <h3 id='parametros-de-query'>Parametros de query</h3>
 <table><thead>
 <tr>
@@ -854,26 +792,40 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 </thead><tbody>
 <tr>
-<td>inicio</td>
-<td>Data (YYYY-MM-DD) *Obrigatorio</td>
-<td>Data de início da pesquiça.</td>
+<td>checkin</td>
+<td>(YYYY-MM-DD) *Obrigatorio</td>
+<td>Data de início da pesquisa.</td>
 </tr>
 <tr>
-<td>fim</td>
-<td>Data (YYYY-MM-DD) *Obrigatorio</td>
-<td>Data de fim da pesquiça.</td>
+<td>checkout</td>
+<td>(YYYY-MM-DD) *Obrigatorio</td>
+<td>Data de fim da pesquisa.</td>
 </tr>
 <tr>
-<td>pessoas</td>
-<td>Interger (1 a 5) *Obrigatorio</td>
-<td>Numero de pessoas na reservas.</td>
+<td>adults</td>
+<td>Interger *Obrigatorio</td>
+<td>Numero de adultos</td>
 </tr>
 <tr>
-<td>acomdacao</td>
+<td>chd5</td>
+<td>Interger *Opcional</td>
+<td>Numero de crianças até 5 anos.</td>
+</tr>
+<tr>
+<td>chd12</td>
+<td>Interger *Opcional</td>
+<td>Numero de crianças de 6 a 12 anos.</td>
+</tr>
+<tr>
+<td>roomId</td>
 <td>Integer *Opcional</td>
 <td>Id da acomodação.</td>
 </tr>
 </tbody></table>
+
+<p>Parametros de retorno</p>
+
+<p>Parâmetro Descrição</p>
 <h3 id='parametros-de-retorno'>Parametros de retorno</h3>
 <table><thead>
 <tr>
@@ -882,112 +834,140 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 </thead><tbody>
 <tr>
-<td>idacomodacao</td>
+<td>roomId</td>
 <td>ID único da acomodação.</td>
 </tr>
 <tr>
-<td>nome</td>
+<td>roomName</td>
 <td>Nome da acomodação</td>
 </tr>
 <tr>
-<td>descricao</td>
-<td>Codigo do hotel que acomodação pertecem.</td>
+<td>hotelId</td>
+<td>Codigo do hotel que acomodação pertecem</td>
 </tr>
 <tr>
-<td>maxadt</td>
+<td>roomDescription</td>
+<td>Descrição da acomodação</td>
+</tr>
+<tr>
+<td>maxAdt</td>
 <td>Número máximo de adultos permitidos.</td>
 </tr>
 <tr>
-<td>maxchd5</td>
+<td>maxChd5</td>
 <td>Número máximo de crianças até 5 anos permitidas.</td>
 </tr>
 <tr>
-<td>maxchd12</td>
+<td>maxChd12</td>
 <td>Número máximo de crianças até 12 anos permitidas.</td>
 </tr>
 <tr>
-<td>maxocup</td>
-<td>Número máximo permitido de acupação</td>
+<td>minOccupation</td>
+<td>Mínimos permitido de acupação</td>
 </tr>
 <tr>
-<td>regime</td>
-<td>Regime da acomodação.</td>
+<td>maxOccupation</td>
+<td>Máximo permitido de acupação</td>
 </tr>
 <tr>
-<td>foto</td>
+<td>roomMeal</td>
+<td>Regime de alimentação incluído.</td>
+</tr>
+<tr>
+<td></td>
+<td>0 - Sem regime</td>
+</tr>
+<tr>
+<td></td>
+<td>1- Café da manhã</td>
+</tr>
+<tr>
+<td></td>
+<td>2- Café e almoço</td>
+</tr>
+<tr>
+<td></td>
+<td>3- Café e jantar</td>
+</tr>
+<tr>
+<td></td>
+<td>99-Café, almoço e jantar</td>
+</tr>
+<tr>
+<td></td>
+<td>100-Tudo incluído</td>
+</tr>
+<tr>
+<td>roomPhoto</td>
 <td>URL da fota da acomodação.</td>
 </tr>
 <tr>
-<td>tarifario</td>
+<td>rates</td>
 <td>Objeto JSON do tarifáfio.</td>
 </tr>
 <tr>
-<td>tarifario[data]</td>
-<td>Objeto JSON representado a data pesquiçada. Formato YYYY-MM-DD tarifário</td>
+<td>rate[data]</td>
+<td>Objeto JSON representado a data pesquisada. Formato YYYY-MM-DD</td>
 </tr>
 <tr>
-<td>tarifario[data].valor</td>
+<td>rate[data].price</td>
 <td>Valor da díaria na data. Valores em BRL</td>
 </tr>
 <tr>
-<td>tarifario[data].disponibilidade</td>
-<td>Se tem vaga para acomodação no dia.</td>
+<td>rate[data].availability</td>
+<td>Se tem vaga para acomodação no dia.Se não houver vagas retorna false</td>
 </tr>
 <tr>
-<td>tarifario[data].dm</td>
-<td>Mínimo de ocupação permitido para a data.</td>
-</tr>
-<tr>
-<td>tarifario[data].dv</td>
+<td>rate[data].availabilityNumber</td>
 <td>Quantidade de vagas disponíveis.</td>
 </tr>
 <tr>
-<td>tarifario.minimo</td>
+<td>rate.minimum</td>
 <td>Mínimo requerido para a data pesquisada.</td>
 </tr>
 <tr>
-<td>tarifario.regra_minimo</td>
-<td>Valor booleano se o numero de pessoas pesquisadas cumpre com mínimo requerido para data pesquisada.</td>
+<td>rate.minimumRule</td>
+<td>Valor booleano se o numero de diárias pesquisada cumpre com mínimo requerido para data.-</td>
 </tr>
 <tr>
-<td>tarifario.disponibilidade</td>
-<td>Valor booleano se tem disponibilidade a acomodação para data pesquisada.</td>
+<td>rate.generalAvailability</td>
+<td>Valor booleano se tem disponibilidade a acomodação para todo o período pesquisado.</td>
 </tr>
 <tr>
-<td>tarifario.total</td>
+<td>rate.amount</td>
 <td>Valor total para a data pesquisada.</td>
 </tr>
 </tbody></table>
-<h2 id='criar-um-tarifario'>Criar um tarifario</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes/2/tarifario"</span> <span class="se">\</span>
+<h2 id='criar-um-tarifario'>Criar um tarifario</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/rooms/2/rates"</span> <span class="se">\</span>
   -H <span class="s2">"Authorization: sua-chave"</span> <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   --request POST <span class="se">\</span>
   --data <span class="s2">"{
-    inicio: '2021-01-22,
-    fim: '2021-01-25,
-    minimo: 1,
-    vagas: 5,
-    valorpessoa1: 450
+    rateCheckin: '2021-01-22,
+    rateCheckout: '2021-01-25,
+    rateMinimum: 1,
+    rateAvailability: 5,
+    rate1pax: 450
   }"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
 <span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
   <span class="na">baseURL</span><span class="p">:</span>
-    <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes/2/tarifario"</span><span class="p">,</span>
+    <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/rooms/2/rates"</span><span class="p">,</span>
   <span class="na">timeout</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
   <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"sua-chave"</span> <span class="p">},</span>
 <span class="p">});</span>
 
 <span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">inicio</span><span class="p">:</span> <span class="s1">'2021-01-22,
-    fim: '</span><span class="mi">2021</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span>
-    <span class="na">minimo</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="na">vagas</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-    <span class="na">valorpessoa1</span><span class="p">:</span> <span class="mi">450</span>
+    <span class="na">rateCheckin</span><span class="p">:</span> <span class="s1">'2021-01-22,
+    rateCheckout: '</span><span class="mi">2021</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span>
+    <span class="na">rateMinimum</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">rateAvailability</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="na">rate1pax</span><span class="p">:</span> <span class="mi">450</span>
   <span class="p">};</span>
 
 <span class="nx">api</span>
-  <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/acomodacoes/2/tarifario"</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"/rooms/2/rates"</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
   <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
 </code></pre>
 <blockquote>
@@ -997,7 +977,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </span></code></pre>
 <p>Para criar ou atualizar um tarifário, passe o periodo que deseja atualizar e o tarifario para cada quantidade de pessoas.</p>
 <h3 id='request-http-2'>Request HTTP</h3>
-<p><code>POST https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes/:idacomodacao/tarifario</code></p>
+<p><code>POST https://restapi.crhoteisbrasil.com.br/api/v1/hotels/:hotelId/rooms/:roomId/rates</code></p>
 <h3 id='parametros-de-body'>Parametros de body</h3>
 <table><thead>
 <tr>
@@ -1007,51 +987,53 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 </thead><tbody>
 <tr>
-<td>inicio</td>
+<td>rateCheckin</td>
 <td>Data (YYYY-MM-DD) *Obrigatorio</td>
 <td>Inicio do periodo</td>
 </tr>
 <tr>
-<td>fim</td>
+<td>rateCheckout</td>
 <td>Data (YYYY-MM-DD) *Obrigatorio</td>
 <td>Fim do periodo</td>
 </tr>
 <tr>
-<td>minimo</td>
+<td>rateMinimum</td>
 <td>Int *Obrigatorio</td>
-<td>Mínimo de pessoas requeridas</td>
+<td>Mínimo de diárias requeridas no período</td>
 </tr>
 <tr>
-<td>vagas</td>
+<td>rateAvailability</td>
 <td>Int *Obrigatorio</td>
 <td>Quantidade de vagas disponíveis</td>
 </tr>
 <tr>
-<td>valorpessoa1</td>
-<td>Data (YYYY-MM-DD)</td>
+<td>rate1pax</td>
+<td>Int</td>
 <td>Tarifa em R\$(BRL) para uma (1) pessoas</td>
 </tr>
 <tr>
-<td>valorpessoa2</td>
-<td>Data (YYYY-MM-DD)</td>
+<td>rate2pax</td>
+<td>int</td>
 <td>Tarifa em R\$(BRL) para duas (2) pessoas</td>
 </tr>
 <tr>
-<td>valorpessoa3</td>
-<td>Data (YYYY-MM-DD)</td>
+<td>rate3pax</td>
+<td>int</td>
 <td>Tarifa em R\$(BRL) para treis (3) pessoas</td>
 </tr>
 <tr>
-<td>valorpessoa4</td>
-<td>Data (YYYY-MM-DD)</td>
+<td>rate4pax</td>
+<td>int</td>
 <td>Tarifa em R\$(BRL) para quatro (4) pessoas</td>
 </tr>
 <tr>
-<td>valorpessoa5</td>
-<td>Data (YYYY-MM-DD)</td>
+<td>rate5pax*</td>
+<td>int</td>
 <td>Tarifa em R\$(BRL) para cinco ou mais pessoas</td>
 </tr>
 </tbody></table>
+
+<p>*o tarifário para 5 pessoas ou mais obedece a seguinte regra de cáculo: Somamos a tarifa para 4 pessoas e adicionamos o valor especificado rate5pax. Ex.: Se a tarifa rate4pax for 200 e a rate5pax for 50 a diária para 5 pessoas ou mais seria a soma de 250, para 6 pessoas a soma de 300 e assim por diante, sempre somando o valor de rate4pax + rate5pax para cada pessoa acima de 4.</p>
 
       </div>
       <div class="dark-box">
