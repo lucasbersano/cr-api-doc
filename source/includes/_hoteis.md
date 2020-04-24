@@ -1,9 +1,9 @@
-# Hoteis
+# Hotéis
 
-## Buscar todos os hoteis
+## Buscar todos os estabelecimentos
 
 ```shell
-curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hotels"
   -H "Authorization: sua-chave"
 ```
 
@@ -16,7 +16,7 @@ const api = axios.create({
   headers: { Authorization: "sua-chave" },
 });
 
-api.get("/hoteis").then((response) => console.log(response.data));
+api.get("/hotels").then((response) => console.log(response.data));
 ```
 
 > O comando de cima retornar uma estrutura JSON da seguinte maneira.
@@ -25,48 +25,48 @@ api.get("/hoteis").then((response) => console.log(response.data));
 {
   "hoteis": [
     {
-      "codhotel": "0019",
-      "nomehotel": "Aquaville Hotel",
-      "descricao": " Hotel Aquaville",
-      "endereco": "Av Beira M",
-      "bairro": "Praia Linda",
-      "cidade": "Porto Seguro",
-      "estado": "BA",
-      "cep": 45810000,
-      "cnpj": "0",
-      "fone": "7332680124",
-      "emailreservas": "comercial@crsolucoes.com.br"
+      "hotelId": "0019",
+      "hotelName": "Aquaville Hotel",
+      "hotelDescription": " Hotel Aquaville",
+      "hotelAddress": "Av Beira M",
+      "hotelZone": "Praia Linda",
+      "hotelCity": "Porto Seguro",
+      "hotelState": "BA",
+      "hotelPostal": 45810000,
+      "hotelDocument": "0",
+      "hotelPhone": "7332680124",
+      "hotelEmail": "comercial@crsolucoes.com.br"
     }
   ]
 }
 ```
 
-Este endpoint retornar todos os hotéis.
+Este endpoint retorna todos os estabelecimentos.
 
 ### Request HTTP
 
-`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels`
 
 ### Parâmetros de retorno
 
-| Parâmetro     | Descrição           |
-| ------------- | ------------------- |
-| codhotel      | Código do hotel     |
-| nomehotel     | Nome do hotel       |
-| descricao     | Descrição do hotel  |
-| endereco      | Endereço do hotel   |
-| bairro        | Barrio do hotel     |
-| cidade        | Cidade do hotel     |
-| estado        | Estado do hotel     |
-| cep           | CEP do hotel        |
-| cnpj          | CNPJ do hotel       |
-| fone          | Telefone de contato |
-| emailreservas | Email de reservas   |
+| Parâmetro        | Descrição                         |
+| ---------------- | --------------------------------- |
+| hotelId          | Código interno do estabelecimento |
+| hotelName        | Nome do estabelecimento           |
+| hotelDescription | Descrição do estabelecimento      |
+| hotelAddress     | Endereço do estabelecimento       |
+| hotelZone        | Bairro do estabelecimento         |
+| hotelCity        | Cidade do estabelecimento         |
+| hotelState       | Estado do estabelecimento         |
+| hotelPostal      | CEP do estabelecimento            |
+| hotelDocument    | CNPJ do estabelecimento           |
+| hotelPhone       | Telefone de contato               |
+| hotelEmail       | Email de reservas                 |
 
-## Buscar um hotel
+## Buscar um estabelecimento
 
 ```shell
-curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019"
   -H "Authorization: sua-chave"
 ```
 
@@ -79,7 +79,7 @@ const api = axios.create({
   headers: { Authorization: "sua-chave" },
 });
 
-api.get("/hoteis/0019").then((response) => console.log(response.data));
+api.get("/hotels/0019").then((response) => console.log(response.data));
 ```
 
 > O comando de cima retornar uma estrutura JSON da seguinte maneira.
@@ -87,23 +87,23 @@ api.get("/hoteis/0019").then((response) => console.log(response.data));
 ```json
 {
   "hotel": {
-    "codhotel": "0019",
-    "nomehotel": "Aquaville Hotel",
-    "descricao": null,
-    "endereco": "Av Beira M",
-    "bairro": "Praia Linda",
-    "cidade": "Porto Seguro",
-    "estado": "BA",
-    "cep": 45810000,
-    "cnpj": "0",
-    "fone": "7332680124",
-    "emailreservas": "comercial@crsolucoes.com.br"
+    "hotelId": "0019",
+    "hotelName": "Aquaville Hotel",
+    "hotelDescription": null,
+    "hotelAddress": "Av Beira M",
+    "hotelZone": "Praia Linda",
+    "hotelCity": "Porto Seguro",
+    "hotelState": "BA",
+    "hotelPostal": 45810000,
+    "hotelDocument": "0",
+    "hotelPhone": "7332680124",
+    "hotelEmail": "comercial@crsolucoes.com.br"
   }
 }
 ```
 
 ### HTTP Request
 
-`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:id`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hotel/:id`
 
 O mesmo parâmetros de retorno são respeitados para busca de um hotel.

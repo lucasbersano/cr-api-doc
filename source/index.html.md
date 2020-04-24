@@ -15,13 +15,15 @@ search: true
 
 # Introdução
 
-Bem-vindo a documentação do Atendimento Total. A API é baseada no padrão REST. Todas as requisições precisa de uma chave api. Entre em contato com seu administrador para obter sua chave de acesso.
+Bem-vindo a documentação do Atendimento Total. A API é baseada no padrão REST. Todas as requisições precisam de uma chave api. Entre em contato com nosso time de parcerias para obter sua chave de acesso.
 
-O endpoint de produção: `https://restapi.crhoteisbrasil.com.br`
+Endpoint de test: `https://staging.crhoteisbrasil.com.br`
+
+Endpoint de produção: `https://restapi.crhoteisbrasil.com.br`
 
 # Autenticação
 
-> Todas as chamas devem enviar a chave de API dentro do cabecalho de "Authorization". Segue um exemplo
+> Todas as chamadas devem enviar a chave de API dentro do cabecalho de "Authorization".
 
 ```shell
 #  Com o shell, é possível passar a chave na chamada.
@@ -45,4 +47,4 @@ api.get("/hoteis").then((response) => console.log(response.data));
 
 > Lembre-se de trocar `sua-chave` para sua chave de acesso.
 
-API do atendimento total precisa de chaves de acesso no header Authentication em todas as requisições feitas. Caso a chave não esteja na requisição ou esteja incorreta, uma mensagem de não autorizado será retornada.
+A API necessita de chaves de acesso no header Authentication em todas as requisições feitas. Caso a chave não esteja na requisição ou esteja incorreta, uma mensagem de não autorizado será retornada.

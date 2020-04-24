@@ -1,9 +1,9 @@
 # Acomodações
 
-## Buscar todas as acomodações
+## Buscar todas as acomodações de um estabelecimento
 
 ```shell
-curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/rooms"
   -H "Authorization: sua-chave"
 ```
 
@@ -16,132 +16,130 @@ const api = axios.create({
   headers: { Authorization: "sua-chave" },
 });
 
-api
-  .get("/hoteis/0019/acomodacoes")
-  .then((response) => console.log(response.data));
+api.get("/hotels/0019/rooms").then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrutura JSON da seguinte maneira.
+> O comando acima retorna uma estrutura JSON:
 
 ```json
 {
-  "acomodacoes": [
+  "rooms": [
     {
-      "idacomodacao": 2,
-      "codhotel": "0019",
-      "nome": "Ap 3 quartos - Ate 9 pessoas",
-      "maxadt": 6,
-      "maxchd5": 2,
-      "chd5free": 3,
-      "maxchd12": 2,
-      "chd12free": 1,
-      "minocup": 1,
-      "maxocup": 9,
-      "descricao": "3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço.",
-      "frigobar": "N",
-      "cofre": "Y",
-      "tvnormalslim": "N",
-      "tvlcd": "Y",
-      "tvacabo": "N",
-      "arcondicionado": "N",
-      "arsplit": "Y",
-      "ventiladordeteto": "Y",
-      "fechaduraeletronica": "N",
-      "varandasacada": "N",
-      "hidromassagem": "N",
-      "camabox": "Y",
-      "cortina": "N",
-      "secador": "N",
-      "naofumante": "N",
-      "cozinhacompleta": "Y",
-      "saladeestar": "Y",
-      "conjugado": "N",
-      "telefone": "N",
+      "roomId": 2,
+      "hotelId": "0019",
+      "roomName": "Ap 3 quartos - Ate 9 pessoas",
+      "maxAdt": 6,
+      "maxChd5": 2,
+      "chd5Free": 3,
+      "maxChd12": 2,
+      "chd12Free": 1,
+      "minOccupation": 1,
+      "maxOccupation": 9,
+      "roomDescription": "3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço.",
+      "minibar": "N",
+      "safeBox": "Y",
+      "NormalTv": "N",
+      "LedTV": "Y",
+      "cableTv": "N",
+      "airConditioning": "N",
+      "splitAirConditioning": "Y",
+      "fan": "Y",
+      "electronicDoorLock": "N",
+      "balcony": "N",
+      "jacuzzi": "N",
+      "queenBoxBed": "Y",
+      "curtain": "N",
+      "hairDryer": "N",
+      "nonSmoking": "N",
+      "kitchen": "Y",
+      "living": "Y",
+      "connectingRoom": "N",
+      "telephone": "N",
       "internet": "N"
     },
     {
-      "idacomodacao": 21,
-      "codhotel": "0019",
-      "nome": "Suite Luxo",
-      "maxadt": 6,
-      "maxchd5": 2,
-      "chd5free": 1,
-      "maxchd12": 2,
-      "chd12free": 1,
-      "minocup": 1,
-      "maxocup": 9,
-      "descricao": "Suite com ar split, frigobar,  tv lcd 32 e cofre.",
-      "frigobar": "Y",
-      "cofre": "Y",
-      "tvnormalslim": "N",
-      "tvlcd": "Y",
-      "tvacabo": "N",
-      "arcondicionado": "N",
-      "arsplit": "Y",
-      "ventiladordeteto": "Y",
-      "fechaduraeletronica": "N",
-      "varandasacada": "N",
-      "hidromassagem": "N",
-      "camabox": "Y",
-      "cortina": "N",
-      "secador": "N",
-      "naofumante": "N",
-      "cozinhacompleta": "N",
-      "saladeestar": "N",
-      "conjugado": "N",
-      "telefone": "N",
+      "roomId": 21,
+      "hotelId": "0019",
+      "roomName": "Suite Luxo",
+      "maxAdt": 6,
+      "maxChd5": 2,
+      "chd5Free": 1,
+      "maxChd12": 2,
+      "chd12Free": 1,
+      "minOccupation": 1,
+      "maxOccupation": 9,
+      "roomDescription": "Suite com ar split, frigobar,  tv lcd 32 e cofre.",
+      "minibar": "Y",
+      "safeBox": "Y",
+      "NormalTv": "N",
+      "LedTV": "Y",
+      "cableTv": "N",
+      "airConditioning": "N",
+      "splitAirConditioning": "Y",
+      "fan": "Y",
+      "electronicDoorLock": "N",
+      "balcony": "N",
+      "jacuzzi": "N",
+      "queenBoxBed": "Y",
+      "curtain": "N",
+      "hairDryer": "N",
+      "nonSmoking": "N",
+      "kitchen": "N",
+      "living": "N",
+      "connectingRoom": "N",
+      "telephone": "N",
       "internet": "N"
     }
   ]
 }
 ```
 
-Este endpoint retornar todos as acomodações com acesso.
+Este endpoint retorna todos as acomodações com acesso do parceiro
 
 ### Request HTTP
 
-`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels/:hotelId/rooms`
 
 ### Parâmetros de retorno
 
-| Parâmetro           | Descrição                                                        |
-| ------------------- | ---------------------------------------------------------------- |
-| idacomodacao        | ID único da acomodação.                                          |
-| codhotel            | Código do hotel que acomodação pertencem.                        |
-| nome                | Nome da acomodação.                                              |
-| maxadt              | Número máximo de adultos permitidos.                             |
-| maxchd5             | Número máximo de crianças até 5 anos permitidas.                 |
-| chd5free            | Número máximo de crianças até 5 anos permitidas sem pagar taxa.  |
-| maxchd12            | Número máximo de crianças até 12 anos permitidas.                |
-| chd12free           | Número máximo de crianças até 12 anos permitidas sem pagar taxa. |
-| minocup             | Mínimos permitido de acupação                                    |
-| maxocup             | Máximo permitido de acupação                                     |
-| descricao           | Descrição da acomodação.                                         |
-| frigobar            | Se tem frigobar ("Y" = Sim ou "N" = Não)                         |
-| cofre               | Se tem cofre ("Y" = Sim ou "N" = Não)                            |
-| tvnormalslim        | Se tem tvnormalslim ("Y" = Sim ou "N" = Não)                     |
-| tvlcd               | Se tem tvlcd ("Y" = Sim ou "N" = Não)                            |
-| tvacabo             | Se tem tvacabo ("Y" = Sim ou "N" = Não)                          |
-| arcondicionado      | Se tem ar condicionado ("Y" = Sim ou "N" = Não)                  |
-| arsplit             | Se tem arsplit ("Y" = Sim ou "N" = Não)                          |
-| ventiladordeteto    | Se tem ventilador de teto ("Y" = Sim ou "N" = Não)               |
-| fechaduraeletronica | Se tem fechadura eletronica ("Y" = Sim ou "N" = Não)             |
-| varandasacada       | Se tem varanda ou sacada ("Y" = Sim ou "N" = Não)                |
-| hidromassagem       | Se tem hidromassagem ("Y" = Sim ou "N" = Não)                    |
-| camabox             | Se tem camabox ("Y" = Sim ou "N" = Não)                          |
-| cortina             | Se tem cortina ("Y" = Sim ou "N" = Não)                          |
-| secador             | Se tem secador ("Y" = Sim ou "N" = Não)                          |
-| naofumante          | Se tem nao fumante ("Y" = Sim ou "N" = Não)                      |
-| cozinhacompleta     | Se tem cozinhacompleta ("Y" = Sim ou "N" = Não)                  |
-| saladeestar         | Se tem sala de estar ("Y" = Sim ou "N" = Não)                    |
-| conjugado           | Se tem conjugado ("Y" = Sim ou "N" = Não)                        |
-| telefone            | Se tem telefone ("Y" = Sim ou "N" = Não)                         |
-| internet            | Se tem internet ("Y" = Sim ou "N" = Não)                         |
+| Parâmetro            | Descrição                                                             |
+| -------------------- | --------------------------------------------------------------------- |
+| roomId               | ID único da acomodação.                                               |
+| hotelId              | Código do estabelecimento que acomodação pertencem.                   |
+| roomName             | Nome da acomodação.                                                   |
+| maxAdt               | Número máximo de adultos permitidos.                                  |
+| maxChd5              | Número máximo de crianças até 5 anos permitidas.                      |
+| chd5Free             | Número máximo de crianças até 5 anos permitidas sem pagar adicional.  |
+| maxChd12             | Número máximo de crianças até 12 anos permitidas.                     |
+| chd12Free            | Número máximo de crianças até 12 anos permitidas sem pagar adicional. |
+| minOccupation        | Mínimos permitido de acupação                                         |
+| maxOccupation        | Máximo permitido de acupação                                          |
+| roomDescription      | Descrição da acomodação.                                              |
+| minibar              | Se tem frigobar ("Y" = Sim ou "N" = Não)                              |
+| safeBox              | Se tem cofre ("Y" = Sim ou "N" = Não)                                 |
+| NormalTv             | Se tem tvnormalslim ("Y" = Sim ou "N" = Não)                          |
+| LedTV                | Se tem tvlcd ("Y" = Sim ou "N" = Não)                                 |
+| cableTv              | Se tem tvacabo ("Y" = Sim ou "N" = Não)                               |
+| airConditioning      | Se tem ar condicionado ("Y" = Sim ou "N" = Não)                       |
+| splitAirConditioning | Se tem arsplit ("Y" = Sim ou "N" = Não)                               |
+| fan                  | Se tem ventilador de teto ("Y" = Sim ou "N" = Não)                    |
+| electronicDoorLock   | Se tem fechadura eletronica ("Y" = Sim ou "N" = Não)                  |
+| balcony              | Se tem varanda ou sacada ("Y" = Sim ou "N" = Não)                     |
+| jacuzzi              | Se tem hidromassagem ("Y" = Sim ou "N" = Não)                         |
+| queenBoxBed          | Se tem camabox ("Y" = Sim ou "N" = Não)                               |
+| curtain              | Se tem cortina ("Y" = Sim ou "N" = Não)                               |
+| hairDryer            | Se tem secador ("Y" = Sim ou "N" = Não)                               |
+| nonSmoking           | Se tem nao fumante ("Y" = Sim ou "N" = Não)                           |
+| kitchen              | Se tem cozinhacompleta ("Y" = Sim ou "N" = Não)                       |
+| living               | Se tem sala de estar ("Y" = Sim ou "N" = Não)                         |
+| connectingRoom       | Se tem conjugado ("Y" = Sim ou "N" = Não)                             |
+| telephone            | Se tem telefone ("Y" = Sim ou "N" = Não)                              |
+| internet             | Se tem internet ("Y" = Sim ou "N" = Não)                              |
 
 ## Buscar uma acomodação
 
 ```shell
-curl "https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/0019/acomodacoes/2"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/rooms/2"
   -H "Authorization: sua-chave"
 ```
 
@@ -154,46 +152,44 @@ const api = axios.create({
   headers: { Authorization: "sua-chave" },
 });
 
-api
-  .get("/hoteis/0019/acomodacoes/2")
-  .then((response) => console.log(response.data));
+api.get("/hotels/0019/rooms/2").then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrutura JSON da seguinte maneira.
+> O comando acima retorna uma estrutura JSON:
 
 ```json
 {
-  "acomodacao": {
-    "idacomodacao": 2,
-    "codhotel": "0019",
-    "nome": "Ap 3 quartos - Ate 9 pessoas",
-    "maxadt": 6,
-    "maxchd5": 2,
-    "chd5free": 3,
-    "maxchd12": 2,
-    "chd12free": 1,
-    "minocup": 1,
-    "maxocup": 9,
-    "descricao": "3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço.",
-    "frigobar": "N",
-    "cofre": "Y",
-    "tvnormalslim": "N",
-    "tvlcd": "Y",
-    "tvacabo": "N",
-    "arcondicionado": "N",
-    "arsplit": "Y",
-    "ventiladordeteto": "Y",
-    "fechaduraeletronica": "N",
-    "varandasacada": "N",
-    "hidromassagem": "N",
-    "camabox": "Y",
-    "cortina": "N",
-    "secador": "N",
-    "naofumante": "N",
-    "cozinhacompleta": "Y",
-    "saladeestar": "Y",
-    "conjugado": "N",
-    "telefone": "N",
+  "rooms": {
+    "roomId": 2,
+    "hotelId": "0019",
+    "roomName": "Ap 3 quartos - Ate 9 pessoas",
+    "maxAdt": 6,
+    "maxChd5": 2,
+    "chd5Free": 3,
+    "maxChd12": 2,
+    "chd12Free": 1,
+    "minOccupation": 1,
+    "maxOccupation": 9,
+    "roomDescription": "3 quartos sendo 1 suíte, com ar split, sala com ventilador de teto e TV LCD, cofre, cozinha completa, área de serviço.",
+    "minibar": "N",
+    "safeBox": "Y",
+    "NormalTv": "N",
+    "LedTV": "Y",
+    "cableTv": "N",
+    "airConditioning": "N",
+    "splitAirConditioning": "Y",
+    "fan": "Y",
+    "electronicDoorLock": "N",
+    "balcony": "N",
+    "jacuzzi": "N",
+    "queenBoxBed": "Y",
+    "curtain": "N",
+    "hairDryer": "N",
+    "nonSmoking": "N",
+    "kitchen": "Y",
+    "living": "Y",
+    "connectingRoom": "N",
+    "telephone": "N",
     "internet": "N"
   }
 }
@@ -201,6 +197,6 @@ api
 
 ### HTTP Request
 
-`GET https://restapi.crhoteisbrasil.com.br/api/v1/hoteis/:codhotel/acomodacoes/:id`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels/:hotelId/rooms/:roomId`
 
-O mesmo parâmentros de retorno são respeitados para busca de uma acomodação.
+Os mesmos parâmentros de retorno são respeitados para busca de uma acomodação.
