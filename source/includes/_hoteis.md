@@ -23,7 +23,7 @@ api.get("/hotels").then((response) => console.log(response.data));
 
 ```json
 {
-  "hoteis": [
+  "hotels": [
     {
       "hotelId": "0019",
       "hotelName": "Aquaville Hotel",
