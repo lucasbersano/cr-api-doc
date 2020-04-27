@@ -63,7 +63,7 @@ Este endpoint retorna todos os estabelecimentos.
 | hotelDocument    | CNPJ do estabelecimento           |
 | hotelPhone       | Telefone de contato               |
 | hotelEmail       | Email de reservas                 |
-| hotelPhoto       | Fota da hotel                     |
+| hotelPhoto       | Foto da hotel                     |
 
 ## Buscar um estabelecimento
 

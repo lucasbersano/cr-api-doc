@@ -139,7 +139,7 @@ Parâmetro Descrição
 |                               | 3- Café e jantar                                                                         |
 |                               | 99-Café, almoço e jantar                                                                 |
 |                               | 100-Tudo incluído                                                                        |
-| roomPhoto                     | URL da fota da acomodação.                                                               |
+| roomPhoto                     | URL da foto da acomodação.                                                               |
 | rates                         | Objeto JSON do tarifáfio.                                                                |
 | rate[data]                    | Objeto JSON representado a data pesquisada. Formato YYYY-MM-DD                           |
 | rate[data].price              | Valor da díaria na data. Valores em BRL                                                  |

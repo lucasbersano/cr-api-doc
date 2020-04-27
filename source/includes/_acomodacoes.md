@@ -109,7 +109,7 @@ Este endpoint retorna todos as acomodações com acesso do parceiro
 | roomId               | ID único da acomodação.                                               |
 | hotelId              | Código do estabelecimento que acomodação pertencem.                   |
 | roomName             | Nome da acomodação.                                                   |
-| roomPhoto            | Fota da acomodação                                                    |
+| roomPhoto            | Foto da acomodação                                                    |
 | maxAdt               | Número máximo de adultos permitidos.                                  |
 | maxChd5              | Número máximo de crianças até 5 anos permitidas.                      |
 | chd5Free             | Número máximo de crianças até 5 anos permitidas sem pagar adicional.  |
