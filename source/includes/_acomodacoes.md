@@ -28,6 +28,7 @@ api.get("/hotels/0019/rooms").then((response) => console.log(response.data));
       "roomId": 2,
       "hotelId": "0019",
       "roomName": "Ap 3 quartos - Ate 9 pessoas",
+      "roomPhoto": "https://orc.in/fotosacomo/2/1.jpg",
       "maxAdt": 6,
       "maxChd5": 2,
       "chd5Free": 3,
@@ -61,6 +62,7 @@ api.get("/hotels/0019/rooms").then((response) => console.log(response.data));
       "roomId": 21,
       "hotelId": "0019",
       "roomName": "Suite Luxo",
+      "roomPhoto": "https://orc.in/fotosacomo/21/1.jpg",
       "maxAdt": 6,
       "maxChd5": 2,
       "chd5Free": 1,
@@ -71,8 +73,8 @@ api.get("/hotels/0019/rooms").then((response) => console.log(response.data));
       "roomDescription": "Suite com ar split, frigobar,  tv lcd 32 e cofre.",
       "minibar": "Y",
       "safeBox": "Y",
-      "NormalTv": "N",
-      "LedTV": "Y",
+      "normalTv": "N",
+      "ledTV": "Y",
       "cableTv": "N",
       "airConditioning": "N",
       "splitAirConditioning": "Y",
@@ -107,6 +109,7 @@ Este endpoint retorna todos as acomodações com acesso do parceiro
 | roomId               | ID único da acomodação.                                               |
 | hotelId              | Código do estabelecimento que acomodação pertencem.                   |
 | roomName             | Nome da acomodação.                                                   |
+| roomPhoto            | Fota da acomodação                                                    |
 | maxAdt               | Número máximo de adultos permitidos.                                  |
 | maxChd5              | Número máximo de crianças até 5 anos permitidas.                      |
 | chd5Free             | Número máximo de crianças até 5 anos permitidas sem pagar adicional.  |
@@ -117,8 +120,8 @@ Este endpoint retorna todos as acomodações com acesso do parceiro
 | roomDescription      | Descrição da acomodação.                                              |
 | minibar              | Se tem frigobar ("Y" = Sim ou "N" = Não)                              |
 | safeBox              | Se tem cofre ("Y" = Sim ou "N" = Não)                                 |
-| NormalTv             | Se tem tvnormalslim ("Y" = Sim ou "N" = Não)                          |
-| LedTV                | Se tem tvlcd ("Y" = Sim ou "N" = Não)                                 |
+| normalTv             | Se tem tvnormalslim ("Y" = Sim ou "N" = Não)                          |
+| ledTV                | Se tem tvlcd ("Y" = Sim ou "N" = Não)                                 |
 | cableTv              | Se tem tvacabo ("Y" = Sim ou "N" = Não)                               |
 | airConditioning      | Se tem ar condicionado ("Y" = Sim ou "N" = Não)                       |
 | splitAirConditioning | Se tem arsplit ("Y" = Sim ou "N" = Não)                               |

@@ -35,7 +35,8 @@ api.get("/hotels").then((response) => console.log(response.data));
       "hotelPostal": 45810000,
       "hotelDocument": "0",
       "hotelPhone": "7332680124",
-      "hotelEmail": "comercial@crsolucoes.com.br"
+      "hotelEmail": "comercial@crsolucoes.com.br",
+      "hotelPhoto": "https://orc.in/fotoshotel/0019/1.jpg"
     }
   ]
 }
@@ -62,6 +63,7 @@ Este endpoint retorna todos os estabelecimentos.
 | hotelDocument    | CNPJ do estabelecimento           |
 | hotelPhone       | Telefone de contato               |
 | hotelEmail       | Email de reservas                 |
+| hotelPhoto       | Fota da hotel                     |
 
 ## Buscar um estabelecimento
 
@@ -97,7 +99,8 @@ api.get("/hotels/0019").then((response) => console.log(response.data));
     "hotelPostal": 45810000,
     "hotelDocument": "0",
     "hotelPhone": "7332680124",
-    "hotelEmail": "comercial@crsolucoes.com.br"
+    "hotelEmail": "comercial@crsolucoes.com.br",
+    "hotelPhoto": "https://orc.in/fotoshotel/0019/1.jpg"
   }
 }
 ```

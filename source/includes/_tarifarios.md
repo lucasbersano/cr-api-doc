@@ -203,16 +203,17 @@ Para criar ou atualizar um tarifário, passe o periodo que deseja atualizar e o 
 
 ### Parametros de body
 
-| Parametros       | Tipo                            | Descrição                                     |
-| ---------------- | ------------------------------- | --------------------------------------------- |
-| rateCheckin      | Data (YYYY-MM-DD) \*Obrigatorio | Inicio do periodo                             |
-| rateCheckout     | Data (YYYY-MM-DD) \*Obrigatorio | Fim do periodo                                |
-| rateMinimum      | Int \*Obrigatorio               | Mínimo de diárias requeridas no período       |
-| rateAvailability | Int \*Obrigatorio               | Quantidade de vagas disponíveis               |
-| rate1pax         | Int                             | Tarifa em R\$(BRL) para uma (1) pessoas       |
-| rate2pax         | int                             | Tarifa em R\$(BRL) para duas (2) pessoas      |
-| rate3pax         | int                             | Tarifa em R\$(BRL) para treis (3) pessoas     |
-| rate4pax         | int                             | Tarifa em R\$(BRL) para quatro (4) pessoas    |
-| rate5pax\*       | int                             | Tarifa em R\$(BRL) para cinco ou mais pessoas |
+| Parametros       | Tipo                            | Descrição                                                                                                                                                                                                |
+| ---------------- | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| rateCheckin      | Data (YYYY-MM-DD) \*Obrigatorio | Inicio do periodo                                                                                                                                                                                        |
+| rateCheckout     | Data (YYYY-MM-DD) \*Obrigatorio | Fim do periodo                                                                                                                                                                                           |
+| rateMinimum      | Int \*Obrigatorio               | Mínimo de diárias requeridas no período                                                                                                                                                                  |
+| rateAvailability | Int \*Obrigatorio               | Quantidade de vagas disponíveis                                                                                                                                                                          |
+| rate1pax         | Int                             | Tarifa em R\$(BRL) para uma (1) pessoas                                                                                                                                                                  |
+| rate2pax         | int                             | Tarifa em R\$(BRL) para duas (2) pessoas                                                                                                                                                                 |
+| rate3pax         | int                             | Tarifa em R\$(BRL) para treis (3) pessoas                                                                                                                                                                |
+| rate4pax         | int                             | Tarifa em R\$(BRL) para quatro (4) pessoas                                                                                                                                                               |
+| rate5pax\*       | int                             | Tarifa em R\$(BRL) para cinco ou mais pessoas                                                                                                                                                            |
+| chd5             | Int Min: 0 Maximo: 100          | Valor int proporcional em porcentagem ao valor do duplo. Ec.: Se o valor do duplo for R$ 200,00 e estiver assinalado no campo chd5 o valor 10, será cobrado por adicional da criança o valor de R$ 20,00 |
 
 \*o tarifário para 5 pessoas ou mais obedece a seguinte regra de cáculo: Somamos a tarifa para 4 pessoas e adicionamos o valor especificado rate5pax. Ex.: Se a tarifa rate4pax for 200 e a rate5pax for 50 a diária para 5 pessoas ou mais seria a soma de 250, para 6 pessoas a soma de 300 e assim por diante, sempre somando o valor de rate4pax + rate5pax para cada pessoa acima de 4.
