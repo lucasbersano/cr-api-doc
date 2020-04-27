@@ -321,7 +321,8 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"hotelPostal"</span><span class="p">:</span><span class="w"> </span><span class="mi">45810000</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hotelDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hotelPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7332680124"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"hotelEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="w">
+      </span><span class="s2">"hotelEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotelPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotoshotel/0019/1.jpg"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -380,6 +381,10 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <td>hotelEmail</td>
 <td>Email de reservas</td>
 </tr>
+<tr>
+<td>hotelPhoto</td>
+<td>Fota da hotel</td>
+</tr>
 </tbody></table>
 <h2 id='buscar-um-estabelecimento'>Buscar um estabelecimento</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
@@ -408,7 +413,8 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
     </span><span class="s2">"hotelPostal"</span><span class="p">:</span><span class="w"> </span><span class="mi">45810000</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hotelDocument"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"hotelPhone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7332680124"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"hotelEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="w">
+    </span><span class="s2">"hotelEmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"comercial@crsolucoes.com.br"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"hotelPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotoshotel/0019/1.jpg"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre><h3 id='http-request'>HTTP Request</h3>
@@ -436,6 +442,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"roomId"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"roomName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ap 3 quartos - Ate 9 pessoas"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/2/1.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxAdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxChd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"chd5Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
@@ -469,6 +476,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"roomId"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
       </span><span class="s2">"hotelId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"roomName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite Luxo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"roomPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/21/1.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxAdt"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
       </span><span class="s2">"maxChd5"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
       </span><span class="s2">"chd5Free"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -479,8 +487,8 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"roomDescription"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Suite com ar split, frigobar,  tv lcd 32 e cofre."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"minibar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"safeBox"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"NormalTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"LedTV"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"normalTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"ledTV"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cableTv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"airConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"N"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"splitAirConditioning"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Y"</span><span class="p">,</span><span class="w">
@@ -524,6 +532,10 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <td>Nome da acomodação.</td>
 </tr>
 <tr>
+<td>roomPhoto</td>
+<td>Fota da acomodação</td>
+</tr>
+<tr>
 <td>maxAdt</td>
 <td>Número máximo de adultos permitidos.</td>
 </tr>
@@ -564,11 +576,11 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <td>Se tem cofre (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>NormalTv</td>
+<td>normalTv</td>
 <td>Se tem tvnormalslim (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
-<td>LedTV</td>
+<td>ledTV</td>
 <td>Se tem tvlcd (&quot;Y&quot; = Sim ou &quot;N&quot; = Não)</td>
 </tr>
 <tr>
@@ -1030,6 +1042,11 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <td>rate5pax*</td>
 <td>int</td>
 <td>Tarifa em R\$(BRL) para cinco ou mais pessoas</td>
+</tr>
+<tr>
+<td>chd5</td>
+<td>Int Min: 0 Maximo: 100</td>
+<td>Valor int proporcional em porcentagem ao valor do duplo. Ec.: Se o valor do duplo for R$ 200,00 e estiver assinalado no campo chd5 o valor 10, será cobrado por adicional da criança o valor de R$ 20,00</td>
 </tr>
 </tbody></table>
 
