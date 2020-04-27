@@ -21,7 +21,7 @@ api
   .then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrutura JSON da seguinte maneira.
+> O comando de cima retorna uma estrutura JSON da seguinte maneira.
 
 ```json
 {
@@ -189,7 +189,7 @@ api
   .then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrutura JSON da seguinte maneira.
+> O comando de cima retorna uma estrutura JSON da seguinte maneira.
 
 ```json
 { "msg": "tarifa criada com sucesso" }

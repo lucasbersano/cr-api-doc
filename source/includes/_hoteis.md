@@ -19,7 +19,7 @@ const api = axios.create({
 api.get("/hotels").then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrutura JSON da seguinte maneira.
+> O comando de cima retorna uma estrutura JSON da seguinte maneira.
 
 ```json
 {
@@ -84,7 +84,7 @@ const api = axios.create({
 api.get("/hotels/0019").then((response) => console.log(response.data));
 ```
 
-> O comando de cima retornar uma estrutura JSON da seguinte maneira.
+> O comando de cima retorna uma estrutura JSON da seguinte maneira.
 
 ```json
 {
