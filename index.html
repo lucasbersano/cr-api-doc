@@ -258,6 +258,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#reservas" class="toc-h1 toc-link" data-title="Reservas">Reservas</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#buscas-reservas" class="toc-h2 toc-link" data-title="Buscas Reservas">Buscas Reservas</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
     </div>
     <div class="page-wrapper">
@@ -833,6 +841,11 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <td>Integer *Opcional</td>
 <td>Id da acomodação.</td>
 </tr>
+<tr>
+<td>coupon_code</td>
+<td>String *Opcional</td>
+<td>Coupon para desconto</td>
+</tr>
 </tbody></table>
 
 <p>Parametros de retorno</p>
@@ -1025,22 +1038,22 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 <tr>
 <td>rate2pax</td>
-<td>int</td>
+<td>Int</td>
 <td>Tarifa em R\$(BRL) para duas (2) pessoas</td>
 </tr>
 <tr>
 <td>rate3pax</td>
-<td>int</td>
+<td>Int</td>
 <td>Tarifa em R\$(BRL) para treis (3) pessoas</td>
 </tr>
 <tr>
 <td>rate4pax</td>
-<td>int</td>
+<td>Int</td>
 <td>Tarifa em R\$(BRL) para quatro (4) pessoas</td>
 </tr>
 <tr>
 <td>rate5pax*</td>
-<td>int</td>
+<td>Int</td>
 <td>Tarifa em R\$(BRL) para cinco ou mais pessoas</td>
 </tr>
 <tr>
@@ -1050,7 +1063,135 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 </tr>
 </tbody></table>
 
+<p>| appliedCoupon | String | Nome do coupon foi aplicado a tarifa |</p>
+
+<p>| appliedOffer | String | Nome da oferta foi aplicado a tarifa |</p>
+
+<p>| appliedPackage | String | Node do pacote foi aplicado a tarifa |</p>
+
 <p>*o tarifário para 5 pessoas ou mais obedece a seguinte regra de cáculo: Somamos a tarifa para 4 pessoas e adicionamos o valor especificado rate5pax. Ex.: Se a tarifa rate4pax for 200 e a rate5pax for 50 a diária para 5 pessoas ou mais seria a soma de 250, para 6 pessoas a soma de 300 e assim por diante, sempre somando o valor de rate4pax + rate5pax para cada pessoa acima de 4.</p>
+<h1 id='reservas'>Reservas</h1><h2 id='buscas-reservas'>Buscas Reservas</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/reservations?checkin=2021-02-27&amp;checkout=2021-10-01"</span>
+  -H <span class="s2">"Authorization: sua-chave"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">baseURL</span><span class="p">:</span> <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1"</span><span class="p">,</span>
+  <span class="na">timeout</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="na">Authorization</span><span class="p">:</span> <span class="s2">"sua-chave"</span> <span class="p">},</span>
+<span class="p">});</span>
+
+<span class="nx">api</span>
+  <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"/hotels/:codhotel/reservations?checkin=2021-02-27&amp;checkout=2021-10-01"</span><span class="p">)</span>
+  <span class="p">.</span><span class="nx">then</span><span class="p">((</span><span class="nx">response</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+</code></pre>
+<blockquote>
+<p>O comando de cima retorna uma estrutura JSON da seguinte maneira.</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"idreserva"</span><span class="p">:</span><span class="w"> </span><span class="mi">455649</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João das Neves"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111111"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua do Falcom"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"bairro"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Millenium"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cidade"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ilha Bela"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"estado"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SP"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"cep"</span><span class="p">:</span><span class="w"> </span><span class="mi">06521032</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"joao@neves.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"fone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111111"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"hotel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0019"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"acomodacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"entrada"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-21T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"saida"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-26T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"diarias"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"totalreserva"</span><span class="p">:</span><span class="w"> </span><span class="mi">1122</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"formapgto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"statuss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aprovado_Cielo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"identificador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202010920226056621122"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Este endpoint retorna todos os estabelecimentos.</p>
+<h3 id='request-http'>Request HTTP</h3>
+<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels</code></p>
+<h3 id='parametros-de-retorno'>Parâmetros de retorno</h3>
+<table><thead>
+<tr>
+<th>Parâmetro</th>
+<th>Descrição</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>idreserva</td>
+<td>Id da reserva</td>
+</tr>
+<tr>
+<td>nome</td>
+<td>Nome do cliente</td>
+</tr>
+<tr>
+<td>cpf</td>
+<td>CPF do cliente</td>
+</tr>
+<tr>
+<td>endereco</td>
+<td>Endereço do cliente</td>
+</tr>
+<tr>
+<td>bairro</td>
+<td>Bairro do cliente</td>
+</tr>
+<tr>
+<td>cidade</td>
+<td>Cidade do cliente</td>
+</tr>
+<tr>
+<td>estado</td>
+<td>Estado do cliente</td>
+</tr>
+<tr>
+<td>cep</td>
+<td>CEP do cliente</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email do cliente</td>
+</tr>
+<tr>
+<td>fone</td>
+<td>Telefone do cliente</td>
+</tr>
+<tr>
+<td>acomodacao</td>
+<td>Id da acomodação</td>
+</tr>
+<tr>
+<td>entrada</td>
+<td>Data de entrada</td>
+</tr>
+<tr>
+<td>saida</td>
+<td>Data de Saida</td>
+</tr>
+<tr>
+<td>diarias</td>
+<td>Quantidade de diarias</td>
+</tr>
+<tr>
+<td>totalreserva</td>
+<td>Total pago pelo reserva</td>
+</tr>
+<tr>
+<td>statuss</td>
+<td>Stutus do pagamento</td>
+</tr>
+<tr>
+<td>identificador</td>
+<td>Identificador da reserva</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
