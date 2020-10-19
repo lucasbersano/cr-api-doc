@@ -9,6 +9,7 @@ includes:
   - hoteis
   - acomodacoes
   - tarifarios
+  - reservas
 
 search: true
 ---

@@ -106,14 +106,15 @@ Este endpoint retorna as acomodações com tarifário do estabelecimento. Obriga
 
 ### Parametros de query
 
-| Parâmetro | Tipo                       | Descrição                          |
-| --------- | -------------------------- | ---------------------------------- |
-| checkin   | (YYYY-MM-DD) \*Obrigatorio | Data de início da pesquisa.        |
-| checkout  | (YYYY-MM-DD) \*Obrigatorio | Data de fim da pesquisa.           |
-| adults    | Interger \*Obrigatorio     | Numero de adultos                  |
-| chd5      | Interger \*Opcional        | Numero de crianças até 5 anos.     |
-| chd12     | Interger \*Opcional        | Numero de crianças de 6 a 12 anos. |
-| roomId    | Integer \*Opcional         | Id da acomodação.                  |
+| Parâmetro   | Tipo                       | Descrição                          |
+| ----------- | -------------------------- | ---------------------------------- |
+| checkin     | (YYYY-MM-DD) \*Obrigatorio | Data de início da pesquisa.        |
+| checkout    | (YYYY-MM-DD) \*Obrigatorio | Data de fim da pesquisa.           |
+| adults      | Interger \*Obrigatorio     | Numero de adultos                  |
+| chd5        | Interger \*Opcional        | Numero de crianças até 5 anos.     |
+| chd12       | Interger \*Opcional        | Numero de crianças de 6 a 12 anos. |
+| roomId      | Integer \*Opcional         | Id da acomodação.                  |
+| coupon_code | String \*Opcional          | Coupon para desconto               |
 
 Parametros de retorno
 
@@ -210,10 +211,16 @@ Para criar ou atualizar um tarifário, passe o periodo que deseja atualizar e o 
 | rateMinimum      | Int \*Obrigatorio               | Mínimo de diárias requeridas no período                                                                                                                                                                  |
 | rateAvailability | Int \*Obrigatorio               | Quantidade de vagas disponíveis                                                                                                                                                                          |
 | rate1pax         | Int                             | Tarifa em R\$(BRL) para uma (1) pessoas                                                                                                                                                                  |
-| rate2pax         | int                             | Tarifa em R\$(BRL) para duas (2) pessoas                                                                                                                                                                 |
-| rate3pax         | int                             | Tarifa em R\$(BRL) para treis (3) pessoas                                                                                                                                                                |
-| rate4pax         | int                             | Tarifa em R\$(BRL) para quatro (4) pessoas                                                                                                                                                               |
-| rate5pax\*       | int                             | Tarifa em R\$(BRL) para cinco ou mais pessoas                                                                                                                                                            |
+| rate2pax         | Int                             | Tarifa em R\$(BRL) para duas (2) pessoas                                                                                                                                                                 |
+| rate3pax         | Int                             | Tarifa em R\$(BRL) para treis (3) pessoas                                                                                                                                                                |
+| rate4pax         | Int                             | Tarifa em R\$(BRL) para quatro (4) pessoas                                                                                                                                                               |
+| rate5pax\*       | Int                             | Tarifa em R\$(BRL) para cinco ou mais pessoas                                                                                                                                                            |
 | chd5             | Int Min: 0 Maximo: 100          | Valor int proporcional em porcentagem ao valor do duplo. Ec.: Se o valor do duplo for R$ 200,00 e estiver assinalado no campo chd5 o valor 10, será cobrado por adicional da criança o valor de R$ 20,00 |
+
+| appliedCoupon | String | Nome do coupon foi aplicado a tarifa |
+
+| appliedOffer | String | Nome da oferta foi aplicado a tarifa |
+
+| appliedPackage | String | Node do pacote foi aplicado a tarifa |
 
 \*o tarifário para 5 pessoas ou mais obedece a seguinte regra de cáculo: Somamos a tarifa para 4 pessoas e adicionamos o valor especificado rate5pax. Ex.: Se a tarifa rate4pax for 200 e a rate5pax for 50 a diária para 5 pessoas ou mais seria a soma de 250, para 6 pessoas a soma de 300 e assim por diante, sempre somando o valor de rate4pax + rate5pax para cada pessoa acima de 4.
