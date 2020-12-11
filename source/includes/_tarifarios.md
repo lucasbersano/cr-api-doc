@@ -221,6 +221,6 @@ Para criar ou atualizar um tarifário, passe o periodo que deseja atualizar e o 
 
 | appliedOffer | String | Nome da oferta foi aplicado a tarifa |
 
-| appliedPackage | String | Node do pacote foi aplicado a tarifa |
+| appliedPackage | String | Nome do pacote foi aplicado a tarifa |
 
-\*o tarifário para 5 pessoas ou mais obedece a seguinte regra de cáculo: Somamos a tarifa para 4 pessoas e adicionamos o valor especificado rate5pax. Ex.: Se a tarifa rate4pax for 200 e a rate5pax for 50 a diária para 5 pessoas ou mais seria a soma de 250, para 6 pessoas a soma de 300 e assim por diante, sempre somando o valor de rate4pax + rate5pax para cada pessoa acima de 4.
+\*o tarifário para 5 pessoas ou mais obedece a seguinte regra de cálculo: Somamos a tarifa para 4 pessoas e adicionamos o valor especificado rate5pax. Ex.: Se a tarifa rate4pax for 200 e a rate5pax for 50 a diária para 5 pessoas ou mais seria a soma de 250, para 6 pessoas a soma de 300 e assim por diante, sempre somando o valor de rate4pax + rate5pax para cada pessoa acima de 4.

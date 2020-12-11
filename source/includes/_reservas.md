@@ -76,5 +76,5 @@ Este endpoint retorna todos os estabelecimentos.
 | saida         | Data de Saida            |
 | diarias       | Quantidade de diarias    |
 | totalreserva  | Total pago pelo reserva  |
-| statuss       | Stutus do pagamento      |
+| statuss       | Status do pagamento      |
 | identificador | Identificador da reserva |
