@@ -44,11 +44,26 @@ api
       "diarias": 5,
       "totalreserva": 1122,
       "formapgto": "mastercard",
+      "parcelas":1
       "statuss": "Aprovado_Cielo",
       "identificador": "202010920226056621122"
-    }
-  ]
-}
+       "acomodacoes": [
+                {
+                    "acomodacao": "1188",
+                    "nomeacomodacao": "Standard com café da manhã",
+                    "adt": 2,
+                    "valor": 780,
+                    "regime": "1"
+                },
+                {
+                    "acomodacao": "1188",
+                    "nomeacomodacao": "Standard&nbsp; com café da manhã",
+                    "adt": 2,
+                    "valor": 780,
+                    "regime": "1"
+                }
+            ]
+        }
 ```
 
 Este endpoint retorna todos os estabelecimentos.
