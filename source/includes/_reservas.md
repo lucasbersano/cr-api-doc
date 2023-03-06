@@ -3,7 +3,7 @@
 ## Buscas Reservas
 
 ```shell
-curl "https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/reservations?checkin=2021-02-27&checkout=2021-10-01"
+curl "https://restapi.crhoteisbrasil.com.br/api/v1/hotels/{codhotel}/reservations?checkin=2021-02-27&checkout=2021-10-01"
   -H "Authorization: sua-chave"
 ```
 
@@ -27,7 +27,7 @@ api
 {
   "reservations": [
     {
-      "idreserva": 455649,
+      "idreserva": "cr29070455649",
       "nome": "João das Neves",
       "cpf": "1111111111",
       "endereco": "Rua do Falcom",
@@ -44,23 +44,26 @@ api
       "diarias": 5,
       "totalreserva": 1122,
       "formapgto": "mastercard",
-      "parcelas":1
+      "parcelas": 1,
+      "datacriacao": "2018-03-30T07:26:30.000Z",
       "statuss": "Aprovado_Cielo",
-      "identificador": "202010920226056621122"
-       "acomodacoes": [
+      "identificador": "202010920226056621122",
+      "acomodacoes": [
                 {
                     "acomodacao": "1188",
                     "nomeacomodacao": "Standard com café da manhã",
                     "adt": 2,
                     "valor": 780,
-                    "regime": "1"
+                    "regime": "1",
+                    "roomPhoto": "https://orc.in/fotosacomo/1188/1.jpg"
                 },
                 {
                     "acomodacao": "1188",
                     "nomeacomodacao": "Standard&nbsp; com café da manhã",
                     "adt": 2,
                     "valor": 780,
-                    "regime": "1"
+                    "regime": "1",
+                    "roomPhoto": "https://orc.in/fotosacomo/1188/1.jpg"
                 }
             ]
         }
@@ -70,7 +73,7 @@ Este endpoint retorna todos os estabelecimentos.
 
 ### Request HTTP
 
-`GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels`
+`GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels/{codhotel}/reservations`
 
 ### Parâmetros de retorno
 
@@ -93,3 +96,10 @@ Este endpoint retorna todos os estabelecimentos.
 | totalreserva  | Total pago pelo reserva  |
 | statuss       | Status do pagamento      |
 | identificador | Identificador da reserva |
+| acomodacao    | Array de objetos com informações das acomodações |
+| &emsp;acomodacao     | Id da acomodação     |
+| &emsp;nomeacomodacao | Nome da acomodação   |
+| &emsp;adt            | Adultos permitidos   |
+| &emsp;valor          | Valor da acomodação  |
+| &emsp;regime         | Regime da acomodação |
+| &emsp;roomPhoto      | Foto da acomodação   |
