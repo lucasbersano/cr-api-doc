@@ -1070,7 +1070,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <p>| appliedPackage | String | Nome do pacote foi aplicado a tarifa |</p>
 
 <p>*o tarifário para 5 pessoas ou mais obedece a seguinte regra de cálculo: Somamos a tarifa para 4 pessoas e adicionamos o valor especificado rate5pax. Ex.: Se a tarifa rate4pax for 200 e a rate5pax for 50 a diária para 5 pessoas ou mais seria a soma de 250, para 6 pessoas a soma de 300 e assim por diante, sempre somando o valor de rate4pax + rate5pax para cada pessoa acima de 4.</p>
-<h1 id='reservas'>Reservas</h1><h2 id='buscas-reservas'>Buscas Reservas</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/0019/reservations?checkin=2021-02-27&amp;checkout=2021-10-01"</span>
+<h1 id='reservas'>Reservas</h1><h2 id='buscas-reservas'>Buscas Reservas</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hotels/{codhotel}/reservations?checkin=2021-02-27&amp;checkout=2021-10-01"</span>
   -H <span class="s2">"Authorization: sua-chave"</span>
 </code></pre><pre class="highlight javascript tab-javascript"><code><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s2">"axios"</span><span class="p">;</span>
 
@@ -1090,7 +1090,7 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"reservations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"idreserva"</span><span class="p">:</span><span class="w"> </span><span class="mi">455649</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"idreserva"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cr29070455649"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"nome"</span><span class="p">:</span><span class="w"> </span><span class="s2">"João das Neves"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"cpf"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1111111111"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"endereco"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rua do Falcom"</span><span class="p">,</span><span class="w">
@@ -1107,30 +1107,33 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
       </span><span class="s2">"diarias"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
       </span><span class="s2">"totalreserva"</span><span class="p">:</span><span class="w"> </span><span class="mi">1122</span><span class="p">,</span><span class="w">
       </span><span class="s2">"formapgto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mastercard"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"parcelas"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+      </span><span class="s2">"parcelas"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"datacriacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-03-30T07:26:30.000Z"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"statuss"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Aprovado_Cielo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"identificador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202010920226056621122"</span><span class="w">
-       </span><span class="s2">"acomodacoes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"identificador"</span><span class="p">:</span><span class="w"> </span><span class="s2">"202010920226056621122"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"acomodacoes"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"acomodacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1188"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"nomeacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard com café da manhã"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"adt"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">780</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+                    </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"roomPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/1188/1.jpg"</span><span class="w">
                 </span><span class="p">},</span><span class="w">
                 </span><span class="p">{</span><span class="w">
                     </span><span class="s2">"acomodacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1188"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"nomeacomodacao"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard&amp;nbsp; com café da manhã"</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"adt"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
                     </span><span class="s2">"valor"</span><span class="p">:</span><span class="w"> </span><span class="mi">780</span><span class="p">,</span><span class="w">
-                    </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="w">
+                    </span><span class="s2">"regime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+                    </span><span class="s2">"roomPhoto"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://orc.in/fotosacomo/1188/1.jpg"</span><span class="w">
                 </span><span class="p">}</span><span class="w">
             </span><span class="p">]</span><span class="w">
         </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>Este endpoint retorna todos os estabelecimentos.</p>
 <h3 id='request-http'>Request HTTP</h3>
-<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels</code></p>
+<p><code>GET https://restapi.crhoteisbrasil.com.br/api/v1/hotels/{codhotel}/reservations</code></p>
 <h3 id='parametros-de-retorno'>Parâmetros de retorno</h3>
 <table><thead>
 <tr>
@@ -1205,6 +1208,34 @@ curl <span class="s2">"https://restapi.crhoteisbrasil.com.br/api/v1/hoteis"</spa
 <tr>
 <td>identificador</td>
 <td>Identificador da reserva</td>
+</tr>
+<tr>
+<td>acomodacao</td>
+<td>Array de objetos com informações das acomodações</td>
+</tr>
+<tr>
+<td>&emsp;acomodacao</td>
+<td>Id da acomodação</td>
+</tr>
+<tr>
+<td>&emsp;nomeacomodacao</td>
+<td>Nome da acomodação</td>
+</tr>
+<tr>
+<td>&emsp;adt</td>
+<td>Adultos permitidos</td>
+</tr>
+<tr>
+<td>&emsp;valor</td>
+<td>Valor da acomodação</td>
+</tr>
+<tr>
+<td>&emsp;regime</td>
+<td>Regime da acomodação</td>
+</tr>
+<tr>
+<td>&emsp;roomPhoto</td>
+<td>Foto da acomodação</td>
 </tr>
 </tbody></table>
 
