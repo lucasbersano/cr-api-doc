@@ -38,7 +38,6 @@ api
       "email": "joao@neves.com",
       "fone": "1111111111",
       "hotel": "0019",
-      "acomodacao": "123",
       "entrada": "2021-06-21T00:00:00.000Z",
       "saida": "2021-06-26T00:00:00.000Z",
       "diarias": 5,
@@ -77,25 +76,29 @@ Este endpoint retorna todos os estabelecimentos.
 
 ### Parâmetros de retorno
 
-| Parâmetro     | Descrição                |
-| ------------- | ------------------------ |
-| idreserva     | Id da reserva            |
-| nome          | Nome do cliente          |
-| cpf           | CPF do cliente           |
-| endereco      | Endereço do cliente      |
-| bairro        | Bairro do cliente        |
-| cidade        | Cidade do cliente        |
-| estado        | Estado do cliente        |
-| cep           | CEP do cliente           |
-| email         | Email do cliente         |
-| fone          | Telefone do cliente      |
-| acomodacao    | Id da acomodação         |
-| entrada       | Data de entrada          |
-| saida         | Data de Saida            |
-| diarias       | Quantidade de diarias    |
-| totalreserva  | Total pago pelo reserva  |
-| statuss       | Status do pagamento      |
-| identificador | Identificador da reserva |
+| Parâmetro     | Descrição                        |
+| ------------- | ------------------------         |
+| idreserva     | Id da reserva                    |
+| nome          | Nome do cliente                  |
+| cpf           | CPF do cliente                   |
+| endereco      | Endereço do cliente              |
+| bairro        | Bairro do cliente                |
+| cidade        | Cidade do cliente                |
+| estado        | Estado do cliente                |
+| cep           | CEP do cliente                   |
+| email         | Email do cliente                 |
+| fone          | Telefone do cliente              |
+| hotel         | Identificador do hotel           |
+| entrada       | Data de entrada                  |
+| saida         | Data de Saida                    |
+| diarias       | Quantidade de diarias            |
+| totalreserva  | Total da reserva                 |
+| valorpago     | Total pago pela reserva          |
+| formapgto     | Forma de pagamento               |
+| parcelas      | Número de parcelas               |
+| datacriacao   | Data em que a reserva foi criada |
+| statuss       | Status do pagamento              |
+| identificador | Identificador da reserva         |
 | acomodacao    | Array de objetos com informações das acomodações |
 | &emsp;acomodacao     | Id da acomodação     |
 | &emsp;nomeacomodacao | Nome da acomodação   |
